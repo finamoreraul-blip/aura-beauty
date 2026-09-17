@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PANEL AURA - EDITOR + MARCA</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>body{font-family:Inter,sans-serif}.brico{font-family:'Bricolage Grotesque'}.serif{font-family:'Instrument Serif'}.card{cursor:grab}.dragging{opacity:.25}.drag-over{outline:3px solid #FFD6E7;background:#FFD6E7!important}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(min-width:768px){.grid-2{grid-template-columns:1fr 1fr 1fr}}</style>
+</head>
+<body class="bg-[#FFF9FB]">
+<div class="max-w-[1350px] mx-auto p-4">
+<div class="bg-black text-white rounded-[20px] p-5 flex justify-between items-center"><h1 class="brico text-3xl">AURA <span class="serif italic font-normal">panel editor</span></h1><button onclick="publicarEnVivo()" id="btnPublish" class="bg-[#FFD6E7] text-black rounded-full px-8 py-4 font-bold brico">🚀 PUBLICAR EN VIVO</button></div>
+<div class="bg-white border-2 border-black rounded-[16px] p-3 mt-4 grid md:grid-cols-4 gap-2"><input id="ghOwner" placeholder="Usuario GitHub" class="border-2 border-black rounded-full px-3 py-2 text-sm font-bold"><input id="ghRepo" placeholder="Repo" class="border-2 border-black rounded-full px-3 py-2 text-sm font-bold"><input id="ghToken" type="password" placeholder="Token ghp_..." class="border-2 border-black rounded-full px-3 py-2 text-sm bg-[#FFD6E7]"><input id="ghBranch" value="main" class="border-2 border-black rounded-full px-3 py-2 text-sm"></div>
+<div id="status" class="mt-3 text-xs font-bold bg-[#FFD6E7] border-2 border-black rounded-full px-4 py-2 inline-block">● Editor + marca de agua listo</div>
+
+<div class="grid lg:grid-cols-[420px_1fr] gap-6 mt-5">
+<div class="bg-white border-2 border-black rounded-[24px] p-5 h-fit lg:sticky top-4">
+<h3 class="brico font-extrabold" id="formTitle">Nuevo producto</h3>
+<input type="hidden" id="editId">
+<input id="nombre" placeholder="Nombre *" class="w-full border-2 border-black rounded-full px-4 py-3 text-sm font-bold mt-3">
+<div class="grid grid-cols-2 gap-2 mt-2"><input id="precio" type="number" placeholder="Precio *" class="border-2 border-black rounded-full px-4 py-3 text-sm"><input id="precioOferta" type="number" placeholder="Oferta 🔥" class="border-2 border-black rounded-full px-4 py-3 text-sm bg-[#FFD6E7] font-bold"></div>
+<div class="grid grid-cols-2 gap-2 mt-2"><select id="categoria" class="border-2 border-black rounded-full px-4 py-3 text-sm font-bold"><option>Labios</option><option>Rostro</option><option>Ojos</option><option>Skincare</option><option>Accesorios</option><option>Combos</option></select><select id="stock" class="border-2 border-black rounded-full px-4 py-3 text-sm"><option value="10">Con stock</option><option value="3">Últimas</option><option value="0">Sin stock</option></select></div>
+
+<div class="border-2 border-black rounded-[18px] mt-4 overflow-hidden">
+<div id="dropZone" class="bg-zinc-50 p-4 text-center cursor-pointer">📸 SUBIR FOTO<input type="file" id="fileInput" accept="image/*" hidden></div>
+<canvas id="editorCanvas" class="w-full hidden"></canvas>
+<img id="preview" class="hidden w-full h-64 object-contain bg-white">
+<div id="editorControls" class="hidden p-4 bg-zinc-50 border-t-2 border-black space-y-4">
+<p class="brico font-bold text-xs">✨ EDITOR AURA</p>
+<div><label class="text-[10px] font-bold">BRILLO <span id="vBrillo">100</span>%</label><input type="range" id="brillo" min="0" max="200" value="100" class="w-full"></div>
+<div><label class="text-[10px] font-bold">CONTRASTE <span id="vContraste">100</span>%</label><input type="range" id="contraste" min="0" max="200" value="100" class="w-full"></div>
+<div><label class="text-[10px] font-bold">SATURACIÓN <span id="vSat">100</span>%</label><input type="range" id="sat" min="0" max="200" value="100" class="w-full"></div>
+<div class="border-t pt-3">
+<label class="text-[10px] font-bold">FONDO - ELEGÍ COLOR</label>
+<div class="flex gap-2 items-center mt-2 flex-wrap">
+<input type="color" id="bgColor" value="#ffffff" class="w-10 h-10 rounded-full border-2 border-black cursor-pointer">
+<button onclick="setBg('#ffffff')" class="w-8 h-8 rounded-full border-2 border-black bg-white" title="Blanco"></button>
+<button onclick="setBg('#FFD6E7')" class="w-8 h-8 rounded-full border-2 border-black" style="background:#FFD6E7" title="Rosa Aura"></button>
+<button onclick="setBg('#000000')" class="w-8 h-8 rounded-full border-2 border-white bg-black" title="Negro"></button>
+<button onclick="setBg('#F5F0EB')" class="w-8 h-8 rounded-full border-2 border-black" style="background:#F5F0EB" title="Beige"></button>
+<button onclick="setBg('#FFE4E6')" class="w-8 h-8 rounded-full border-2 border-black" style="background:#FFE4E6" title="Rosa claro"></button>
+<button onclick="removeBg()" class="ml-2 border-2 border-black rounded-full px-3 py-1 text-[10px] font-bold bg-white">FONDO BLANCO</button>
+</div>
+</div>
+<div class="border-t pt-3">
+<label class="text-[10px] font-bold">MARCA DE AGUA AURA</label>
+<div class="flex gap-2 mt-2"><button onclick="addWatermark('AURA beauty')" class="border-2 border-black rounded-full px-4 py-2 text-xs font-bold bg-black text-white">+ AURA beauty</button><button onclick="addWatermark('AURA BEAUTY - Tres Arroyos')" class="border-2 border-black rounded-full px-3 py-2 text-[10px] font-bold bg-white">+ AURA + TRES ARROYOS</button><button onclick="resetImg()" class="border border-black rounded-full px-3 py-2 text-[10px]">Reset</button></div>
+</div>
+<button onclick="aplicarCambios()" class="w-full bg-black text-white rounded-full py-3 font-bold brico mt-2">✓ APLICAR Y GUARDAR FOTO</button>
+</div>
+</div>
+<input id="imgUrl" placeholder="o pegá URL" class="w-full mt-2 border rounded-full px-3 py-2 text-xs">
+<textarea id="desc" placeholder="Descripción" class="w-full border-2 border-black rounded-[16px] px-4 py-2 text-sm mt-3 h-20"></textarea>
+<input id="caracts" placeholder="Características coma: Vegano, 8h" class="w-full border-2 border-black rounded-full px-4 py-2 text-sm mt-2">
+<div class="flex gap-2 mt-3 flex-wrap text-xs"><label><input type="checkbox" id="tagNuevo"> NUEVO</label><label><input type="checkbox" id="tagTop"> TOP</label><label><input type="checkbox" id="destacado"> ★ HERO</label><label><input type="checkbox" id="visible" checked> VISIBLE</label></div>
+<button onclick="guardar()" class="w-full bg-black text-white rounded-full py-3 font-bold mt-4 brico">GUARDAR PRODUCTO</button>
+</div>
+<div><div id="lista" class="grid-2"></div></div>
+</div>
+</div>
+<script>
+let productos=JSON.parse(localStorage.getItem('aura_editor')||'[]');
+if(productos.length===0){productos=[{id:1,nombre:"Gloss Pétala",precio:5800,precioOferta:4900,categoria:"Labios",stock:10,img:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600",desc:"",caracteristicas:[],ficha:{},visible:true,destacado:true,tags:["NUEVO"]}];}
+let imgBase64=""; let originalImg=new Image(); let currentFilter={b:100,c:100,s:100,bg:'#ffffff',watermark:''}; let draggedId=null;
+['ghOwner','ghRepo','ghToken','ghBranch'].forEach(k=>{const v=localStorage.getItem(k); if(v) document.getElementById(k).value=v; document.getElementById(k).addEventListener('input',e=>localStorage.setItem(k,e.target.value));});
+function save(){localStorage.setItem('aura_editor',JSON.stringify(productos)); render();}
+function render(){document.getElementById('lista').innerHTML=productos.map((p,i)=>`<div class="card bg-white border-2 border-black rounded-[18px] overflow-hidden relative" draggable="true" data-id="${p.id}"><div class="absolute top-1 left-1 bg-black text-white text-[10px] w-6 h-6 flex items-center justify-center rounded-full font-bold">${i+1}</div><img src="${p.img}" class="w-full h-32 object-cover"><div class="p-2"><p class="brico font-bold text-[11px] truncate">${p.nombre}</p></div><div class="p-2 pt-0 flex gap-1"><button onclick="editar(${p.id})" class="text-[9px] border-2 border-black rounded-full px-2 py-1">EDIT</button><button onclick="borrar(${p.id})" class="text-[9px] bg-black text-white rounded-full px-2 py-1">X</button></div></div>`).join('');}
+function guardar(){const id=document.getElementById('editId').value; const data={id:id?parseInt(id):Date.now(),nombre:document.getElementById('nombre').value.trim(),precio:parseInt(document.getElementById('precio').value)||0,precioOferta:parseInt(document.getElementById('precioOferta').value)||0,categoria:document.getElementById('categoria').value,stock:parseInt(document.getElementById('stock').value),img:imgBase64||document.getElementById('imgUrl').value||"https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600",desc:document.getElementById('desc').value,caracteristicas:document.getElementById('caracts').value.split(',').map(s=>s.trim()).filter(Boolean),ficha:{Marca:"AURA"},visible:document.getElementById('visible').checked,destacado:document.getElementById('destacado').checked,tags:[...(document.getElementById('tagNuevo').checked?["NUEVO"]:[]),...(document.getElementById('tagTop').checked?["TOP"]:[])]};
+if(!data.nombre||!data.precio) return alert("Falta nombre/precio"); if(id){productos=productos.map(p=>p.id==id?{...p,...data}:p);}else{productos.unshift(data);} save(); document.getElementById('editId').value="";}
+function editar(id){const p=productos.find(x=>x.id===id); document.getElementById('editId').value=p.id; document.getElementById('nombre').value=p.nombre; document.getElementById('precio').value=p.precio; document.getElementById('precioOferta').value=p.precioOferta||"";}
+function borrar(id){if(confirm("Borrar?")){productos=productos.filter(p=>p.id!==id); save();}}
+// EDITOR
+const canvas=document.getElementById('editorCanvas'); const ctx=canvas.getContext('2d'); const preview=document.getElementById('preview');
+function loadImageToEditor(src){originalImg=new Image(); originalImg.crossOrigin="anonymous"; originalImg.onload=()=>{canvas.width=originalImg.width; canvas.height=originalImg.height; document.getElementById('editorControls').classList.remove('hidden'); canvas.classList.remove('hidden'); preview.classList.add('hidden'); currentFilter={b:100,c:100,s:100,bg:document.getElementById('bgColor').value,watermark:''}; document.getElementById('brillo').value=100; document.getElementById('contraste').value=100; document.getElementById('sat').value=100; draw();}; originalImg.src=src;}
+function draw(){if(!originalImg.src) return; ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle=currentFilter.bg; ctx.fillRect(0,0,canvas.width,canvas.height); ctx.filter=`brightness(${currentFilter.b}%) contrast(${currentFilter.c}%) saturate(${currentFilter.s}%)`; ctx.drawImage(originalImg,0,0); ctx.filter='none'; if(currentFilter.watermark){ctx.fillStyle='rgba(0,0,0,0.7)'; ctx.font=`bold ${Math.max(24,canvas.width*0.06)}px 'Bricolage Grotesque'`; ctx.fillText(currentFilter.watermark,20,canvas.height-30); ctx.font=`italic ${Math.max(14,canvas.width*0.03)}px 'Instrument Serif'`; ctx.fillStyle='rgba(0,0,0,0.5)';}}
+function setBg(c){document.getElementById('bgColor').value=c; currentFilter.bg=c; draw();}
+function removeBg(){currentFilter.bg='#ffffff'; document.getElementById('bgColor').value='#ffffff'; draw();}
+function addWatermark(txt){currentFilter.watermark=txt; draw();}
+function resetImg(){currentFilter={b:100,c:100,s:100,bg:'#ffffff',watermark:''}; document.getElementById('bgColor').value='#ffffff'; document.getElementById('brillo').value=100; document.getElementById('contraste').value=100; document.getElementById('sat').value=100; draw();}
+document.getElementById('brillo').oninput=e=>{currentFilter.b=e.target.value; document.getElementById('vBrillo').innerText=e.target.value; draw();};
+document.getElementById('contraste').oninput=e=>{currentFilter.c=e.target.value; document.getElementById('vContraste').innerText=e.target.value; draw();};
+document.getElementById('sat').oninput=e=>{currentFilter.s=e.target.value; document.getElementById('vSat').innerText=e.target.value; draw();};
+document.getElementById('bgColor').oninput=e=>{currentFilter.bg=e.target.value; draw();};
+function aplicarCambios(){imgBase64=canvas.toDataURL('image/jpeg',0.9); preview.src=imgBase64; preview.classList.remove('hidden'); canvas.classList.add('hidden'); document.getElementById('editorControls').classList.add('hidden'); document.getElementById('imgUrl').value="";}
+const dz=document.getElementById('dropZone'); dz.onclick=()=>document.getElementById('fileInput').click();
+document.getElementById('fileInput').onchange=e=>{const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{loadImageToEditor(r.result);}; r.readAsDataURL(f);};
+
+function buildIndexHTML(){return `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>AURA</title><script src="https://cdn.tailwindcss.com"><\/script><\/head><body><script>const productos=${JSON.stringify(productos)}<\/script><h1>AURA ${productos.length} productos<\/h1><\/body><\/html>`;}
+async function publicarEnVivo(){
+const owner=document.getElementById('ghOwner').value.trim(); const repo=document.getElementById('ghRepo').value.trim(); const token=document.getElementById('ghToken').value.trim(); const branch=document.getElementById('ghBranch').value||'main';
+if(!owner||!repo||!token) return alert("Falta token");
+document.getElementById('status').innerText="⏳ Publicando...";
+try{
+const full=(()=>{const prod=${JSON.stringify(productos)}; return `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AURA BEAUTY</title><script src="https://cdn.tailwindcss.com"><\/script><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"><style>body{font-family:Inter,sans-serif;background:#FFF9FB}.brico{font-family:'Bricolage Grotesque'}.serif{font-family:'Instrument Serif'}<\/style><\/head><body><header class="border-b-2 border-black p-4 flex justify-between"><h1 class="brico text-2xl">AURA <span class="serif italic">beauty</span><\/h1><button id="cartBtn" class="border-2 border-black rounded-full px-4 py-2 font-bold">CARRITO (<span id="cartCount">0<\/span>)<\/button><\/header><div id="grid" class="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 max-w-6xl mx-auto"><\/div><div id="modal" class="fixed inset-0 bg-black/60 hidden p-4"><div class="bg-white border-2 border-black rounded-[20px] max-w-2xl mx-auto mt-10 p-6"><div id="modalContent"><\/div><button onclick="document.getElementById('modal').classList.add('hidden')" class="mt-4 border-2 border-black rounded-full px-4 py-2">Cerrar<\/button><\/div><\/div><div id="cartDrawer" class="fixed inset-0 hidden"><div class="absolute inset-0 bg-black/50" onclick="toggleCart()"><\/div><div class="absolute right-0 top-0 h-full w-[350px] bg-white p-6"><div id="cartItems"><\/div><button onclick="checkout()" class="w-full bg-black text-white rounded-full py-3 mt-4">WHATSAPP<\/button><\/div><\/div><script>const productos=${JSON.stringify(productos)};let cart=[];function render(){document.getElementById('grid').innerHTML=productos.map(p=>'<div class="border-2 border-black rounded-[18px] overflow-hidden cursor-pointer" onclick="openModal('+p.id+')"><img src="'+p.img+'" class="w-full h-48 object-cover"><div class="p-3"><p class="brico font-bold text-sm">'+p.nombre+'</p><p class="font-bold">$'+(p.precioOferta||p.precio)+'</p></div></div>').join('')}function openModal(id){const p=productos.find(x=>x.id===id);document.getElementById('modalContent').innerHTML='<img src="'+p.img+'" class="w-full h-80 object-cover rounded-[12px] border-2 border-black"><h2 class="brico text-xl font-bold mt-3">'+p.nombre+'</h2><p>$'+(p.precioOferta||p.precio)+'</p><button onclick="addToCart('+p.id+')" class="w-full bg-black text-white rounded-full py-3 mt-3">Agregar<\/button>';document.getElementById('modal').classList.remove('hidden')}function addToCart(id){const p=productos.find(x=>x.id===id);const f=cart.find(x=>x.id===id);if(f)f.qty++;else cart.push({...p,qty:1});document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('cartItems').innerHTML=cart.map(c=>'<div class="flex justify-between py-2 border-b"><span>'+c.nombre+' x'+c.qty+'</span></div>').join('')}function toggleCart(){document.getElementById('cartDrawer').classList.toggle('hidden')}function checkout(){let m="Hola AURA! Quiero:%0A"+cart.map(c=>"- "+c.nombre+" x"+c.qty).join('%0A');window.open("https://wa.me/5492983389710?text="+m,'_blank')}document.getElementById('cartBtn').onclick=toggleCart;render();<\/script><\/body><\/html>`;})();
+// build real
+let htmlContent = (() => {
+const productosLocal = ${JSON.stringify(productos)};
+return `<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AURA BEAUTY - Tres Arroyos</title><script src="https://cdn.tailwindcss.com"><\/script><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;700&display=swap" rel="stylesheet"><style>body{font-family:Inter,sans-serif;background:#FFF9FB}.brico{font-family:'Bricolage Grotesque'}.serif{font-family:'Instrument Serif'}.no-scrollbar::-webkit-scrollbar{display:none}<\/style><\/head><body>
+<header class="sticky top-0 bg-white border-b-2 border-black p-4 flex justify-between max-w-6xl mx-auto"><h1 class="brico text-2xl font-extrabold">AURA <span class="serif italic font-normal">beauty</span><\/h1><button id="cartBtn" class="border-2 border-black rounded-full px-5 py-2 font-bold">CARRITO (<span id="cartCount">0<\/span>)<\/button><\/header>
+<section class="max-w-6xl mx-auto p-4"><div id="ofertas" class="flex gap-3 overflow-x-auto no-scrollbar pb-2"><\/div><div id="grid" class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4"><\/div><\/section>
+<div id="modal" class="fixed inset-0 bg-black/60 hidden p-4 z-50"><div class="bg-white border-2 border-black rounded-[20px] max-w-2xl mx-auto mt-10 p-6"><div id="modalContent"><\/div><button onclick="document.getElementById('modal').classList.add('hidden')" class="mt-4 border-2 border-black rounded-full px-4 py-2 font-bold">Cerrar<\/button><\/div><\/div>
+<div id="cartDrawer" class="fixed inset-0 hidden z-50"><div class="absolute inset-0 bg-black/50" onclick="toggleCart()"><\/div><div class="absolute right-0 top-0 h-full w-[380px] bg-white border-l-2 border-black p-6"><h3 class="brico text-xl font-bold">CARRITO<\/h3><div id="cartItems" class="mt-4 flex-1"><\/div><div class="mt-4 border-t-2 border-black pt-4"><div class="flex justify-between font-bold"><span>TOTAL<\/span><span id="cartTotal">$0<\/span><\/div><button onclick="checkout()" class="w-full bg-black text-white rounded-full py-4 font-bold mt-4">PEDIR POR WHATSAPP 2983 389710<\/button><\/div><\/div><\/div>
+<script>
+const productos = ${JSON.stringify(productos)};
+let cart=[];
+function render(){const ofertas=productos.filter(p=>p.visible&&p.precioOferta>0);document.getElementById('ofertas').innerHTML=ofertas.map(p=>'<div class="min-w-[140px] border-2 border-black rounded-[14px] overflow-hidden cursor-pointer shrink-0" onclick="openModal('+p.id+')"><img src="'+p.img+'" class="w-full h-24 object-cover"><div class="p-2"><p class="brico text-[11px] font-bold truncate">'+p.nombre+'</p><p class="text-[12px] font-bold">$'+p.precioOferta+'</p><\/div><\/div>').join('');const list=productos.filter(p=>p.visible);document.getElementById('grid').innerHTML=list.map(p=>'<div class="bg-white border-2 border-black rounded-[18px] overflow-hidden cursor-pointer" onclick="openModal('+p.id+')"><img src="'+p.img+'" class="w-full h-48 object-cover"><div class="p-3"><p class="text-[10px] opacity-50">'+p.categoria+'</p><p class="brico font-bold text-[13px] leading-tight">'+p.nombre+'</p><p class="font-extrabold mt-1">$'+(p.precioOferta||p.precio).toLocaleString('es-AR')+'</p><\/div><\/div>').join('')}
+function openModal(id){const p=productos.find(x=>x.id===id);document.getElementById('modalContent').innerHTML='<img src="'+p.img+'" class="w-full h-80 object-cover rounded-[16px] border-2 border-black"><h2 class="brico text-2xl font-bold mt-3">'+p.nombre+'</h2><p class="mt-2 font-bold text-lg">$'+(p.precioOferta||p.precio).toLocaleString('es-AR')+'</p><p class="text-sm opacity-70 mt-2">'+(p.desc||'')+'</p><button onclick="addToCart('+p.id+');document.getElementById(\\'modal\\').classList.add(\\'hidden\\')" class="w-full bg-black text-white rounded-full py-3 font-bold mt-4">AGREGAR AL CARRITO<\/button>';document.getElementById('modal').classList.remove('hidden')}
+function addToCart(id){const p=productos.find(x=>x.id===id);const price=p.precioOferta||p.precio;const f=cart.find(x=>x.id===id);if(f)f.qty++;else cart.push({...p,qty:1,price});updateCart();if(cart.length===1)toggleCart()}
+function updateCart(){document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('cartItems').innerHTML=cart.map((c,i)=>'<div class="flex gap-2 py-2 border-b"><img src="'+c.img+'" class="w-10 h-10 rounded border"><div class="flex-1"><p class="text-xs font-bold">'+c.nombre+'</p><p class="text-xs">$'+c.price+' x '+c.qty+'</p><\/div><\/div>').join('');document.getElementById('cartTotal').innerText='$'+cart.reduce((a,b)=>a+b.price*b.qty,0).toLocaleString('es-AR')}
+function toggleCart(){document.getElementById('cartDrawer').classList.toggle('hidden')}
+function checkout(){let m="Hola AURA BEAUTY! Quiero:%0A"+cart.map(c=>"- "+c.nombre+" x"+c.qty+" ($"+(c.price*c.qty)+")").join('%0A')+"%0ATOTAL: "+document.getElementById('cartTotal').innerText;window.open("https://wa.me/5492983389710?text="+m,'_blank')}
+document.getElementById('cartBtn').onclick=toggleCart;render();
+<\/script><\/body><\/html>`;
+})();
+const b64=btoa(unescape(encodeURIComponent(htmlContent)));
+let sha=null; const getRes=await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/index.html?ref=${branch}`,{headers:{Authorization:`token ${token}`}}); if(getRes.ok){const d=await getRes.json(); sha=d.sha;}
+const put=await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/index.html`,{method:'PUT',headers:{Authorization:`token ${token}`,'Content-Type':'application/json'},body:JSON.stringify({message:`AURA update ${new Date().toLocaleString()}`,content:b64,sha,branch})});
+if(!put.ok) throw new Error(await put.text());
+document.getElementById('status').innerText="✅ ¡Publicado en vivo! Tu web se actualiza en 10-30s";
+alert("✅ Publicado en https://"+owner+".github.io/"+repo+"/");
+}catch(e){alert("Error: "+e.message); document.getElementById('status').innerText="❌ "+e.message;}
+}
+render();
+</script>
+</body>
+</html>
