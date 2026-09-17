@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1789687722144,
+    "nombre": "sasas",
+    "precio": 15000,
+    "descuento": 10,
+    "stock": 3,
+    "contenido": "30",
+    "tono": "rosa",
+    "acabado": "Satinado",
+    "categoria": "Skincare",
+    "tipoPiel": "Seca",
+    "caracteristicas": [
+      "duracion 8 hs",
+      "hipoalergenico"
+    ],
+    "ingredientes": "vit e",
+    "modoUso": "en labios limpios",
+    "descripcion": "sadasd",
+    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789687641075_afeitadora.jpg",
+    "tags": [],
+    "fecha": "2026-09-17T23:28:42.145Z"
+  }
+]
