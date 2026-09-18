@@ -24,29 +24,6 @@
     "fecha": "2026-09-18T16:21:10.571Z"
   },
   {
-    "id": 1789748804419,
-    "nombre": "Esponjitas para maquillaje",
-    "precio": 2000,
-    "precioTachado": 2500,
-    "descuento": 20,
-    "stock": 12,
-    "contenido": "...",
-    "tono": "...",
-    "acabado": "Metalizado",
-    "categoria": "Maquillaje",
-    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789748523398_1001187975.jpg",
-    "tags": [
-      "novedad"
-    ],
-    "aroma": "",
-    "cobertura": "",
-    "duracion": "Larga duración",
-    "tipoPiel": "",
-    "ingredientes": "Esponjitas para maquillar.\nVariedad de colores",
-    "modoUso": "",
-    "fecha": "2026-09-18T16:26:44.420Z"
-  },
-  {
     "id": 1789749347751,
     "nombre": "Parches para acné x36 unidades",
     "precio": 3000,
@@ -157,5 +134,34 @@
     "ingredientes": "Set de 3 perfiladores ",
     "modoUso": "",
     "fecha": "2026-09-18T19:03:42.755Z"
+  },
+  {
+    "id": 1789748804419,
+    "nombre": "Esponjitas para maquillaje",
+    "precio": 2000,
+    "precioTachado": 2500,
+    "descuento": 20,
+    "stock": 12,
+    "contenido": "...",
+    "tono": "...",
+    "acabado": "Mate",
+    "categoria": "Maquillaje",
+    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789748523398_1001187975.jpg",
+    "imagenes": [
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758239206_0_1001187942.jpg",
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758244323_1_1001187944.jpg",
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758249819_2_1001187945.jpg",
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758255226_3_1001187946.jpg"
+    ],
+    "tags": [
+      "novedad"
+    ],
+    "aroma": "",
+    "cobertura": "",
+    "duracion": "Larga duración",
+    "tipoPiel": "",
+    "ingredientes": "Esponjitas para maquillar.\nVariedad de colores",
+    "modoUso": "",
+    "fecha": "2026-09-18T19:04:26.553Z"
   }
 ]
