@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AURA BEAUTY</title>
+<title>AURA BEAUTY - TRES ARROYOS</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -11,7 +11,7 @@ body{font-family:'Inter',sans-serif;background:#08080a;color:#fff;min-height:100
 body::before{content:"";position:fixed;inset:0;background:radial-gradient(900px at 10% -10%, rgba(255,77,109,.22) 0%, transparent 60%), radial-gradient(700px at 95% 10%, rgba(255,194,209,.18) 0%, transparent 55%);pointer-events:none}
 header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;background:rgba(8,8,10,.82);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07)}
 .logo{font-family:'Playfair Display',serif;font-size:36px;font-weight:800;background:linear-gradient(90deg,#ff4d6d,#ff8fab,#ffc2d1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.sub{font-size:10px;letter-spacing:8px;color:#ff8fab;margin-top:6px;opacity:.8}
+.sub{font-size:11px;letter-spacing:7px;color:#ff8fab;margin-top:6px;opacity:.9;font-weight:800}
 .container{max-width:1240px;margin:0 auto;padding:20px 18px 130px;position:relative;z-index:1}
 .search{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);padding:16px 22px;border-radius:22px;color:#fff;outline:none;font-size:14px;margin-bottom:14px}
 .stats{font-size:11px;color:#777;margin-bottom:14px}.stats b{color:#ff8fab}
@@ -37,10 +37,8 @@ header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;backgroun
 .btnBuy{flex:1;padding:12px;border-radius:14px;border:none;background:linear-gradient(90deg,#ff4d6d,#ff8fab);color:#fff;font-weight:800;font-size:11px;letter-spacing:.8px;cursor:pointer}
 .btnIcon{width:44px;height:44px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px}
 .btnIcon:hover{background:#fff;color:#000}
-
-/* MODAL VISTA PREVIA ESTILO ML */
 #previewModal{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(16px);z-index:100;display:none;align-items:center;justify-content:center;padding:12px}
-.prevBox{background:linear-gradient(180deg,#181818,#0f0f0f);border:1px solid rgba(255,255,255,.12);border-radius:28px;width:100%;max-width:980px;max-height:92vh;overflow:hidden;display:grid;grid-template-columns:1.2fr .8fr}
+.prevBox{background:linear-gradient(180deg,#181818,#0f0f0f);border:1px solid rgba(255,255,255,.12);border-radius:28px;width:100%;max-width:980px;max-height:92vh;overflow:hidden;display:grid;grid-template-columns:1.2fr.8fr}
 @media(max-width:750px){.prevBox{grid-template-columns:1fr;overflow:auto;max-height:94vh}}
 .prevImgs{background:#0a0a0a;position:relative;display:flex;flex-direction:column}
 .prevMain{aspect-ratio:1;position:relative;overflow:hidden;background:#080808}
@@ -64,7 +62,6 @@ header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;backgroun
 .btnBigBuy{padding:18px;border-radius:16px;border:none;background:linear-gradient(90deg,#ff4d6d,#ff8fab);color:#fff;font-weight:800;font-size:14px;letter-spacing:.6px;cursor:pointer;box-shadow:0 10px 24px rgba(255,77,109,.35)}
 .btnBigCart{padding:16px;border-radius:16px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
 .closePrev{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.15);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;backdrop-filter:blur(8px)}
-
 .cartFloat{position:fixed;bottom:22px;left:18px;right:18px;max-width:480px;margin:0 auto;background:rgba(16,16,16,.92);border:1px solid rgba(255,255,255,.13);border-radius:24px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(22px);z-index:60;box-shadow:0 24px 70px rgba(0,0,0,.7)}
 .btnCart{padding:13px 22px;border-radius:15px;border:none;background:#fff;color:#000;font-weight:800;font-size:12px;cursor:pointer}
 #cartModal{position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(14px);z-index:99;display:none;align-items:end;justify-content:center}
@@ -73,16 +70,23 @@ header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;backgroun
 </style>
 </head>
 <body>
-<header><div class="logo">AURA BEAUTY</div><div class="sub">BY RAÚL FINAMORE • TRES ARROYOS</div></header>
+<header><div class="logo">AURA BEAUTY</div><div class="sub">TRES ARROYOS</div></header>
 <div class="container">
 <input id="buscador" class="search" placeholder="🔍 Buscar...">
 <div id="stats" class="stats">Cargando...</div>
-<div class="chips"><div class="chip" data-tag="novedad">✨ Novedad</div><div class="chip" data-tag="liquidacion">💥 Liquidación</div><div class="chip" data-tag="mas-vendido">⭐ Más vendido</div><div class="chip" data-tag="exclusivo">💎 Exclusivo</div></div>
-<div class="cats" id="cats"><div class="cat active" data-cat="todos">Todos</div><div class="cat" data-cat="Labiales">Labiales</div><div class="cat" data-cat="Skincare">Skincare</div><div class="cat" data-cat="Perfumes">Perfumes</div><div class="cat" data-cat="Maquillaje">Maquillaje</div></div>
+<div class="chips">
+<div class="chip" data-tag="novedad">✨ Novedad</div>
+<div class="chip" data-tag="se-va-pronto">🔥 Se va pronto</div>
+<div class="chip" data-tag="liquidacion">💥 Liquidación</div>
+<div class="chip" data-tag="mas-vendido">⭐ Más vendido</div>
+<div class="chip" data-tag="exclusivo">💎 Exclusivo</div>
+<div class="chip" data-tag="edicion-limitada">🔒 Edición Limitada</div>
+<div class="chip" data-tag="cruelty-free">🐰 Cruelty Free</div>
+<div class="chip" data-tag="envio-gratis">🚚 Envío Gratis</div>
+</div>
+<div class="cats" id="cats"><div class="cat active" data-cat="todos">Todos</div><div class="cat" data-cat="Labiales">Labiales</div><div class="cat" data-cat="Skincare">Skincare</div><div class="cat" data-cat="Perfumes">Perfumes</div><div class="cat" data-cat="Maquillaje">Maquillaje</div><div class="cat" data-cat="Ojos">Ojos</div><div class="cat" data-cat="Uñas">Uñas</div></div>
 <div id="grid" class="grid"></div>
 </div>
-
-<!-- VISTA PREVIA -->
 <div id="previewModal" onclick="if(event.target===this) cerrarPreview()">
 <div class="prevBox">
 <div class="prevImgs">
@@ -94,37 +98,42 @@ header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;backgroun
 <div class="prevName" id="prevName"></div>
 <div class="prevMeta" id="prevMeta"></div>
 <div class="prevPriceRow"><span class="prevPrice" id="prevPrice"></span><span class="prevOld" id="prevOld"></span><span class="prevOff" id="prevOff" style="display:none"></span></div>
-<div class="prevDesc" id="prevDesc">Producto original Aura Beauty. Envío a Tres Arroyos. Consultá por WhatsApp 2983 389710.</div>
+<div class="prevDesc" id="prevDesc">Producto original Aura Beauty. Envío en Tres Arroyos. Consultá por WhatsApp 2983 389710.</div>
 <div class="qtyRow"><button class="qtyBtn" onclick="cambiarQty(-1)">−</button><span class="qtyNum" id="qtyNum">1</span><button class="qtyBtn" onclick="cambiarQty(1)">+</button><span style="font-size:11px;color:#666;margin-left:8px">unidades</span></div>
 <div class="btnsPrev">
 <button class="btnBigBuy" onclick="comprarAhora()">COMPRAR AHORA</button>
-<button class="btnBigCart" onclick="agregarDesdePreview()">🛒 Agregar al carrito <span style="background:rgba(255,255,255,.15);padding:2px 8px;border-radius:20px;font-size:11px">+</span></button>
+<button class="btnBigCart" onclick="agregarDesdePreview()">🛒 Agregar al carrito +</button>
 </div>
 <div style="font-size:10px;color:#555;margin-top:14px;text-align:center">🚚 Envío gratis + 💳 Cuotas sin interés</div>
 </div>
 </div>
 </div>
-
 <div class="cartFloat" id="cartFloat" style="display:none"><div><div id="cartCount" style="font-size:12px;color:#aaa">0 productos</div><div id="cartTotal" style="font-size:19px;font-weight:800">$0</div></div><button class="btnCart" onclick="abrirCarrito()">VER CARRITO 🛒</button></div>
 <div id="cartModal" onclick="if(event.target===this) cerrarCarrito()"><div class="cartBox"><h3 style="font-family:'Playfair Display',serif;font-size:22px">Tu carrito</h3><div id="cartItems"></div><button style="width:100%;padding:18px;border-radius:16px;border:none;background:linear-gradient(90deg,#10b981,#34d399);color:#fff;font-weight:800;margin-top:18px;cursor:pointer" onclick="enviarWsp()">FINALIZAR POR WHATSAPP</button><button style="width:100%;padding:14px;border-radius:15px;border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.05);color:#888;margin-top:10px" onclick="cerrarCarrito()">Seguir</button></div></div>
-
 <script>
 const WSP="5492983389710";
 let productos=[], filtroCat="todos", filtroTags=[], texto="", carrito=JSON.parse(localStorage.getItem("aura_cart")||"[]");
 let prodActual=null, qtyActual=1, imgIdx=0;
-
 async function cargar(){
   const url="https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/productos.json?nocache="+Date.now()+"_"+Math.random();
   const r=await fetch(url,{cache:"no-store"});
   productos=await r.json();
-  document.getElementById("stats").innerHTML=`<b>${productos.length}</b> productos • Panel conectado ✅`;
   render(); updateFloat();
+  // TIEMPO REAL: reconecta cada 15 seg con el panel
+  setInterval(async()=>{
+    try{
+      const r2=await fetch("https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/productos.json?nocache="+Date.now(),{cache:"no-store"});
+      const data=await r2.json();
+      if(JSON.stringify(data)!==JSON.stringify(productos)){ productos=data; render(); }
+    }catch(e){}
+  },15000);
 }
 function render(){
   let lista=[...productos].reverse();
   if(filtroCat!=="todos") lista=lista.filter(p=>p.categoria===filtroCat);
   if(filtroTags.length>0) lista=lista.filter(p=>p.tags && filtroTags.some(t=>p.tags.includes(t)));
-  if(texto){ const q=texto.toLowerCase(); lista=lista.filter(p=> (p.nombre+" "+(p.tono||"")+" "+(p.tags||[]).join(" ")).toLowerCase().includes(q)); }
+  if(texto){ const q=texto.toLowerCase(); lista=lista.filter(p=> (p.nombre+" "+(p.tono||"")+" "+(p.tags||[]).join(" ")+" "+(p.aroma||"")+" "+(p.cobertura||"")).toLowerCase().includes(q)); }
+  document.getElementById("stats").innerHTML=`<b>${productos.length}</b> productos • <b>${lista.length}</b> mostrando • En vivo ✅`;
   document.getElementById("grid").innerHTML=lista.map(p=>{
     const tieneDesc=p.precioTachado && p.precioTachado>p.precio;
     const porc=tieneDesc? Math.round(100-(p.precio*100/p.precioTachado)) : 0;
@@ -132,7 +141,7 @@ function render(){
       <div class="imgWrap"><img src="${p.imagen}" loading="lazy">${porc>0?`<div class="badge">-${porc}% OFF</div>`:""}</div>
       <div class="info">
         <div class="name">${p.nombre}</div>
-        <div class="meta">${p.contenido||""} ${p.tono? "• "+p.tono:""}</div>
+        <div class="meta">${p.contenido||""} ${p.tono? "• "+p.tono:""} ${p.tags? "• "+p.tags.join(" "):""}</div>
         <div style="display:flex;align-items:center;margin-top:8px"><span class="price">$${p.precio}</span>${tieneDesc?`<span class="priceOld">$${p.precioTachado}</span>`:""}</div>
         <div class="actions" onclick="event.stopPropagation()">
           <button class="btnBuy" onclick="comprarDirecto(${p.id})">COMPRAR</button>
@@ -142,18 +151,15 @@ function render(){
       </div>
     </div>`;
   }).join("");
-  document.getElementById("stats").innerHTML=`<b>${productos.length}</b> productos • Mostrando <b>${lista.length}</b>`;
 }
-
 function abrirPreview(id){
   prodActual=productos.find(p=>p.id===id); if(!prodActual) return;
-  qtyActual=1; imgIdx=0;
-  document.getElementById("qtyNum").innerText=qtyActual;
-  const imgs=[prodActual.imagen, ...(prodActual.imagenes||[])].filter(Boolean);
+  qtyActual=1; imgIdx=0; document.getElementById("qtyNum").innerText=qtyActual;
+  const imgs=[prodActual.imagen,...(prodActual.imagenes||[])].filter(Boolean);
   document.getElementById("prevMainImg").src=imgs[0];
   document.getElementById("prevCat").innerText=(prodActual.categoria||"").toUpperCase()+" • "+(prodActual.tags||[]).join(" • ");
   document.getElementById("prevName").innerText=prodActual.nombre;
-  document.getElementById("prevMeta").innerText=`${prodActual.contenido||""} ${prodActual.tono? "• Tono "+prodActual.tono:""} ${prodActual.acabado? "• "+prodActual.acabado:""}`;
+  document.getElementById("prevMeta").innerText=`${prodActual.contenido||""} ${prodActual.tono? "• Tono "+prodActual.tono:""} ${prodActual.acabado? "• "+prodActual.acabado:""} ${prodActual.aroma? "• "+prodActual.aroma:""} ${prodActual.cobertura? "• Cobertura "+prodActual.cobertura:""} ${prodActual.duracion? "• "+prodActual.duracion:""}`;
   document.getElementById("prevPrice").innerText="$"+prodActual.precio;
   if(prodActual.precioTachado && prodActual.precioTachado>prodActual.precio){
     const porc=Math.round(100-(prodActual.precio*100/prodActual.precioTachado));
@@ -161,68 +167,35 @@ function abrirPreview(id){
     document.getElementById("prevOff").style.display="inline-block";
     document.getElementById("prevOff").innerText="-"+porc+"% OFF";
   } else { document.getElementById("prevOld").innerText=""; document.getElementById("prevOff").style.display="none"; }
+  let extra=""; if(prodActual.ingredientes) extra+=`<br><b>Ingredientes:</b> ${prodActual.ingredientes}`; if(prodActual.modoUso) extra+=`<br><b>Uso:</b> ${prodActual.modoUso}`;
+  document.getElementById("prevDesc").innerHTML=`Producto original Aura Beauty. Envío en Tres Arroyos. ${extra}`;
   document.getElementById("prevThumbs").innerHTML=imgs.map((im,i)=>`<img src="${im}" class="thumb ${i===0?'active':''}" onclick="cambiarImg(${i})">`).join("");
   document.getElementById("previewModal").style.display="flex";
 }
-function cambiarImg(i){
-  const imgs=[prodActual.imagen, ...(prodActual.imagenes||[])].filter(Boolean);
-  imgIdx=i; document.getElementById("prevMainImg").src=imgs[i];
-  document.querySelectorAll(".thumb").forEach((t,idx)=>t.classList.toggle("active", idx===i));
-}
+function cambiarImg(i){ const imgs=[prodActual.imagen,...(prodActual.imagenes||[])].filter(Boolean); imgIdx=i; document.getElementById("prevMainImg").src=imgs[i]; document.querySelectorAll(".thumb").forEach((t,idx)=>t.classList.toggle("active", idx===i)); }
 function cerrarPreview(){ document.getElementById("previewModal").style.display="none"; prodActual=null; }
 function cambiarQty(d){ qtyActual=Math.max(1, qtyActual+d); document.getElementById("qtyNum").innerText=qtyActual; }
-
-function comprarDirecto(id){
-  prodActual=productos.find(p=>p.id===id);
-  qtyActual=1;
-  comprarAhora();
-}
+function comprarDirecto(id){ prodActual=productos.find(p=>p.id===id); qtyActual=1; comprarAhora(); }
 function comprarAhora(){
   if(!prodActual) return;
   for(let i=0;i<qtyActual;i++) carrito.push(prodActual);
   localStorage.setItem("aura_cart", JSON.stringify(carrito));
-  // contar ventas
-  let ventas=JSON.parse(localStorage.getItem("aura_ventas")||"{}");
-  ventas[prodActual.id]=(ventas[prodActual.id]||0)+qtyActual;
-  localStorage.setItem("aura_ventas", JSON.stringify(ventas));
-  updateFloat();
-  enviarWsp();
+  let ventas=JSON.parse(localStorage.getItem("aura_ventas")||"{}"); ventas[prodActual.id]=(ventas[prodActual.id]||0)+qtyActual; localStorage.setItem("aura_ventas", JSON.stringify(ventas));
+  updateFloat(); enviarWsp();
 }
-function agregarDesdePreview(){
-  if(!prodActual) return;
-  for(let i=0;i<qtyActual;i++) carrito.push(prodActual);
-  localStorage.setItem("aura_cart", JSON.stringify(carrito));
-  updateFloat();
-  cerrarPreview();
-}
-function addCart(id,cant=1){
-  const p=productos.find(x=>x.id===id);
-  for(let i=0;i<cant;i++) carrito.push(p);
-  localStorage.setItem("aura_cart",JSON.stringify(carrito));
-  updateFloat();
-  // animacion carrito flotante
-  const f=document.getElementById("cartFloat");
-  f.style.transform="scale(1.06)"; setTimeout(()=>f.style.transform="scale(1)",160);
-}
-
+function agregarDesdePreview(){ if(!prodActual) return; for(let i=0;i<qtyActual;i++) carrito.push(prodActual); localStorage.setItem("aura_cart", JSON.stringify(carrito)); updateFloat(); cerrarPreview(); }
+function addCart(id,cant=1){ const p=productos.find(x=>x.id===id); for(let i=0;i<cant;i++) carrito.push(p); localStorage.setItem("aura_cart",JSON.stringify(carrito)); updateFloat(); const f=document.getElementById("cartFloat"); f.style.transform="scale(1.06)"; setTimeout(()=>f.style.transform="scale(1)",160); }
 function updateFloat(){
-  const f=document.getElementById("cartFloat");
-  if(carrito.length===0){ f.style.display="none"; return; }
-  f.style.display="flex";
-  document.getElementById("cartCount").innerText=carrito.length+" productos";
-  document.getElementById("cartTotal").innerText="$"+carrito.reduce((s,p)=>s+p.precio,0);
+  const f=document.getElementById("cartFloat"); if(carrito.length===0){ f.style.display="none"; return; } f.style.display="flex";
+  document.getElementById("cartCount").innerText=carrito.length+" productos"; document.getElementById("cartTotal").innerText="$"+carrito.reduce((s,p)=>s+p.precio,0);
   document.getElementById("cartItems").innerHTML=carrito.map((p,i)=>`<div class="item"><img src="${p.imagen}" style="width:56px;height:56px;border-radius:12px;object-fit:cover"><div style="flex:1"><div style="font-size:13px;font-weight:700">${p.nombre}</div><div style="font-size:12px;color:#10b981">$${p.precio}</div></div><span onclick="carrito.splice(${i},1);localStorage.setItem('aura_cart',JSON.stringify(carrito));updateFloat()" style="cursor:pointer">✕</span></div>`).join("");
 }
 function abrirCarrito(){ document.getElementById("cartModal").style.display="flex"; }
 function cerrarCarrito(){ document.getElementById("cartModal").style.display="none"; }
 function enviarWsp(){
   if(carrito.length===0) return;
-  let ventas=JSON.parse(localStorage.getItem("aura_ventas")||"{}");
-  carrito.forEach(p=>{ ventas[p.id]=(ventas[p.id]||0)+1; });
-  localStorage.setItem("aura_ventas", JSON.stringify(ventas));
-  let msg="Hola Aura Beauty! ✨%0AQuiero:%0A";
-  carrito.forEach(p=>msg+=`• ${p.nombre} $${p.precio}%0A`);
-  msg+=`%0ATotal $${carrito.reduce((s,p)=>s+p.precio,0)}`;
+  let ventas=JSON.parse(localStorage.getItem("aura_ventas")||"{}"); carrito.forEach(p=>{ ventas[p.id]=(ventas[p.id]||0)+1; }); localStorage.setItem("aura_ventas", JSON.stringify(ventas));
+  let msg="Hola Aura Beauty! ✨%0AQuiero:%0A"; carrito.forEach(p=>msg+=`• ${p.nombre} $${p.precio}%0A`); msg+=`%0ATotal $${carrito.reduce((s,p)=>s+p.precio,0)}`;
   window.open(`https://wa.me/${WSP}?text=${msg}`,"_blank");
 }
 document.getElementById("buscador").addEventListener("input",e=>{ texto=e.target.value; render(); });
