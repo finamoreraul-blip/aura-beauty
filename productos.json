@@ -20,5 +20,28 @@
     "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789687641075_afeitadora.jpg",
     "tags": [],
     "fecha": "2026-09-17T23:28:42.145Z"
+  },
+  {
+    "id": 1789690058098,
+    "nombre": "asdasdas",
+    "precio": 1367,
+    "precioTachado": 4555,
+    "descuento": 70,
+    "stock": 3,
+    "contenido": "14",
+    "tono": "ef",
+    "acabado": "Mate",
+    "categoria": "Labiales",
+    "tipoPiel": "Todo tipo",
+    "caracteristicas": [
+      "fsdfsdfsd",
+      "sdfsdfsd"
+    ],
+    "ingredientes": "fsdfsd",
+    "modoUso": "fsdfsdf",
+    "descripcion": "sdfsdf",
+    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789689956530_afeitadora.jpg",
+    "tags": [],
+    "fecha": "2026-09-18T00:07:38.099Z"
   }
 ]
