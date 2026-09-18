@@ -71,30 +71,6 @@
     "fecha": "2026-09-18T16:32:11.908Z"
   },
   {
-    "id": 1789754381826,
-    "nombre": "Arqueador de pestañas ",
-    "precio": 2550,
-    "precioTachado": 3000,
-    "descuento": 15,
-    "stock": 10,
-    "contenido": "1",
-    "tono": "Varios",
-    "acabado": "Mate",
-    "categoria": "Ojos",
-    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789754240479_1001188024.jpg",
-    "tags": [
-      "novedad",
-      "se-va-pronto"
-    ],
-    "aroma": "",
-    "cobertura": "",
-    "duracion": "",
-    "tipoPiel": "",
-    "ingredientes": "",
-    "modoUso": "",
-    "fecha": "2026-09-18T17:59:41.834Z"
-  },
-  {
     "id": 1789749347751,
     "nombre": "Parches para acné x36 unidades",
     "precio": 3000,
@@ -143,5 +119,35 @@
     "ingredientes": "Set de 3 perfiladores ",
     "modoUso": "",
     "fecha": "2026-09-18T19:01:37.039Z"
+  },
+  {
+    "id": 1789754381826,
+    "nombre": "Arqueador de pestañas ",
+    "precio": 2550,
+    "precioTachado": 3000,
+    "descuento": 15,
+    "stock": 10,
+    "contenido": "1",
+    "tono": "Varios",
+    "acabado": "Mate",
+    "categoria": "Ojos",
+    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789754240479_1001188024.jpg",
+    "imagenes": [
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758134668_0_1001188021.jpg",
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758138602_1_1001188018.jpg",
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758142412_2_1001188015.jpg",
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758146187_3_1001188012.jpg"
+    ],
+    "tags": [
+      "novedad",
+      "se-va-pronto"
+    ],
+    "aroma": "",
+    "cobertura": "",
+    "duracion": "",
+    "tipoPiel": "",
+    "ingredientes": "",
+    "modoUso": "",
+    "fecha": "2026-09-18T19:02:35.788Z"
   }
 ]
