@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "id": 1789693534900,
+    "nombre": "asddasd",
+    "precio": 4500,
+    "precioTachado": 5000,
+    "descuento": 10,
+    "stock": 10,
+    "contenido": "asdas",
+    "tono": "asdasd",
+    "acabado": "Mate",
+    "categoria": "Labiales",
+    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789693498757_exo5.jpg",
+    "tags": [],
+    "aroma": "",
+    "cobertura": "",
+    "duracion": "",
+    "tipoPiel": "",
+    "ingredientes": "asdasd",
+    "modoUso": "asdasd",
+    "fecha": "2026-09-18T01:05:34.900Z"
+  }
+]
