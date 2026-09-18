@@ -43,37 +43,5 @@
     "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789689956530_afeitadora.jpg",
     "tags": [],
     "fecha": "2026-09-18T00:07:38.099Z"
-  },
-  {
-    "id": 1789691136039,
-    "nombre": "sasas",
-    "precio": 9000,
-    "precioTachado": 10000,
-    "descuento": 10,
-    "stock": 11,
-    "contenido": "15",
-    "tono": "asd",
-    "acabado": "Mate",
-    "categoria": "Labiales",
-    "tipoPiel": "Todo tipo",
-    "caracteristicas": [
-      "dfass",
-      "ssfsdfsd"
-    ],
-    "ingredientes": "f<dfs<dfsd",
-    "modoUso": "sdfsdfsdf",
-    "descripcion": "sdfsdfs<df",
-    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789691086035_glucosa.jpg",
-    "tags": [
-      "cruelty-free",
-      "envio-gratis",
-      "liquidacion",
-      "se-va-pronto",
-      "edicion-limitada",
-      "exclusivo",
-      "novedad",
-      "mas-vendido"
-    ],
-    "fecha": "2026-09-18T00:25:36.040Z"
   }
 ]
