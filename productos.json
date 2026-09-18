@@ -115,5 +115,29 @@
     "ingredientes": "Parches para acné con motivos de: frutas, animales, corazones.",
     "modoUso": "Adhesivo",
     "fecha": "2026-09-18T17:55:56.608Z"
+  },
+  {
+    "id": 1789754381826,
+    "nombre": "Arqueador de pestañas ",
+    "precio": 2550,
+    "precioTachado": 3000,
+    "descuento": 15,
+    "stock": 10,
+    "contenido": "1",
+    "tono": "Varios",
+    "acabado": "Mate",
+    "categoria": "Ojos",
+    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789754240479_1001188024.jpg",
+    "tags": [
+      "novedad",
+      "se-va-pronto"
+    ],
+    "aroma": "",
+    "cobertura": "",
+    "duracion": "",
+    "tipoPiel": "",
+    "ingredientes": "",
+    "modoUso": "",
+    "fecha": "2026-09-18T17:59:41.834Z"
   }
 ]
