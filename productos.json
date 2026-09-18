@@ -170,5 +170,34 @@
     "ingredientes": "Parches para acné con motivos de: frutas, animales, corazones.",
     "modoUso": "Adhesivo",
     "fecha": "2026-09-18T19:06:10.933Z"
+  },
+  {
+    "id": 1789758489945,
+    "nombre": "Mascarilla facial ",
+    "precio": 3,
+    "precioTachado": null,
+    "descuento": 0,
+    "stock": 10,
+    "contenido": "36",
+    "tono": "Indefinido",
+    "acabado": "Mate",
+    "categoria": "Skincare",
+    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758388905_1001188063.jpg",
+    "imagenes": [
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758396579_0_1001188060.jpg",
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758400165_1_1001188066.jpg",
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758405331_2_1001188057.jpg",
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758412541_3_1001188054.jpg"
+    ],
+    "tags": [
+      "novedad"
+    ],
+    "aroma": "",
+    "cobertura": "Full Cover",
+    "duracion": "Larga duración",
+    "tipoPiel": "",
+    "ingredientes": "",
+    "modoUso": "",
+    "fecha": "2026-09-18T19:08:09.947Z"
   }
 ]
