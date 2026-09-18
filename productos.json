@@ -92,5 +92,28 @@
     "ingredientes": "Parches para acné con motivos de: frutas, animales, corazones.",
     "modoUso": "Adhesivo",
     "fecha": "2026-09-18T16:35:47.752Z"
+  },
+  {
+    "id": 1789754036387,
+    "nombre": "Set de perfiladores ",
+    "precio": 2500,
+    "precioTachado": 2500,
+    "descuento": 0,
+    "stock": 10,
+    "contenido": "X3",
+    "tono": "Celeste, amarillo, rosa",
+    "acabado": "Brilloso",
+    "categoria": "Maquillaje",
+    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789753865746_1001188006.jpg",
+    "tags": [
+      "liquidacion"
+    ],
+    "aroma": "",
+    "cobertura": "",
+    "duracion": "Larga duración",
+    "tipoPiel": "",
+    "ingredientes": "Set de 3 perfiladores ",
+    "modoUso": "",
+    "fecha": "2026-09-18T17:53:56.388Z"
   }
 ]
