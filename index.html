@@ -71,6 +71,12 @@ header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;backgroun
 .calcRow{display:flex;justify-content:space-between;font-size:12px;margin:6px 0;color:#aaa}
 .calcRow.total{font-size:16px;font-weight:800;color:#fff;border-top:1px solid rgba(255,255,255,.1);padding-top:10px;margin-top:10px}
 .calcRow.ahorro{color:#10b981;font-weight:700}
+/* NUEVO ML */
+.specTable{margin-top:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden}
+.specRow{display:flex;justify-content:space-between;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.06);font-size:11px}
+.specRow:last-child{border:none}
+.specKey{color:#888;text-transform:uppercase;letter-spacing:1px;font-size:9px;font-weight:800;max-width:45%}
+.specVal{color:#fff;font-weight:600;text-align:right;max-width:55%}
 </style>
 </head>
 <body>
@@ -103,7 +109,17 @@ header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;backgroun
 <div class="prevName" id="prevName"></div>
 <div class="prevMeta" id="prevMeta"></div>
 <div class="prevPriceRow"><span class="prevPrice" id="prevPrice"></span><span class="prevOld" id="prevOld"></span><span class="prevOff" id="prevOff" style="display:none"></span></div>
+
 <div class="prevDesc" id="prevDesc" style="font-size:12px;color:#aaa;line-height:1.5;background:rgba(255,255,255,.04);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.06)">Producto original. Envío en Tres Arroyos.</div>
+
+<!-- BLOQUE TIPO MERCADO LIBRE -->
+<div id="specBlock" style="display:none">
+<div style="font-size:12px;font-weight:800;margin:18px 0 8px;letter-spacing:1px">CARACTERÍSTICAS</div>
+<div class="specTable" id="specTable"></div>
+<div id="ingrBlock" style="display:none;margin-top:12px"><div style="font-size:10px;letter-spacing:2px;color:#ff8fab;font-weight:800;margin-bottom:6px">INGREDIENTES</div><div id="ingrText" style="font-size:11px;color:#bbb;line-height:1.6;background:rgba(255,255,255,.03);padding:10px;border-radius:10px"></div></div>
+<div id="usoBlock" style="display:none;margin-top:12px"><div style="font-size:10px;letter-spacing:2px;color:#ff8fab;font-weight:800;margin-bottom:6px">MODO DE USO</div><div id="usoText" style="font-size:11px;color:#bbb;line-height:1.6;background:rgba(255,255,255,.03);padding:10px;border-radius:10px"></div></div>
+</div>
+
 <div class="qtyRow"><button class="qtyBtn" onclick="cambiarQty(-1)">−</button><span class="qtyNum" id="qtyNum">1</span><button class="qtyBtn" onclick="cambiarQty(1)">+</button><span style="font-size:10px;color:#666;margin-left:6px">unidades</span></div>
 <div class="btnsPrev">
 <button class="btnBigBuy" onclick="comprarAhora()">COMPRAR AHORA</button>
@@ -188,7 +204,35 @@ function abrirPreview(id){
     document.getElementById("prevOff").style.display="inline-block";
     document.getElementById("prevOff").innerText="-"+porc+"% OFF";
   } else { document.getElementById("prevOld").innerText=""; document.getElementById("prevOff").style.display="none"; }
+
+  // GALERIA
   document.getElementById("prevThumbs").innerHTML=imgs.map((im,i)=>`<img src="${im}" class="thumb ${i===0?'active':''}" onclick="cambiarImg(${i})">`).join("");
+
+  // BLOQUE ML
+  const specs=[];
+  if(prodActual.contenido) specs.push(["Contenido", prodActual.contenido]);
+  if(prodActual.tono) specs.push(["Tono / Color", prodActual.tono]);
+  if(prodActual.acabado) specs.push(["Acabado", prodActual.acabado]);
+  if(prodActual.aroma) specs.push(["Aroma", prodActual.aroma]);
+  if(prodActual.cobertura) specs.push(["Cobertura", prodActual.cobertura]);
+  if(prodActual.duracion) specs.push(["Duración", prodActual.duracion]);
+  if(prodActual.tipoPiel) specs.push(["Tipo de piel", prodActual.tipoPiel]);
+  if(prodActual.categoria) specs.push(["Categoría", prodActual.categoria]);
+  if(imgs.length>1) specs.push(["Fotos", imgs.length+" fotos"]);
+  if(specs.length>0){
+    document.getElementById("specBlock").style.display="block";
+    document.getElementById("specTable").innerHTML=specs.map(([k,v])=>`<div class="specRow"><span class="specKey">${k}</span><span class="specVal">${v}</span></div>`).join("");
+  } else { document.getElementById("specBlock").style.display="none"; }
+
+  if(prodActual.ingredientes){
+    document.getElementById("ingrBlock").style.display="block";
+    document.getElementById("ingrText").innerText=prodActual.ingredientes;
+  } else { document.getElementById("ingrBlock").style.display="none"; }
+  if(prodActual.modoUso){
+    document.getElementById("usoBlock").style.display="block";
+    document.getElementById("usoText").innerText=prodActual.modoUso;
+  } else { document.getElementById("usoBlock").style.display="none"; }
+
   document.getElementById("previewModal").style.display="flex";
 }
 function cambiarImg(i){ const imgs=[prodActual.imagen,...(prodActual.imagenes||[])].filter(Boolean); document.getElementById("prevMainImg").src=imgs[i]; document.querySelectorAll(".thumb").forEach((t,idx)=>t.classList.toggle("active", idx===i)); }
@@ -244,7 +288,6 @@ function enviarWsp(){
   window.open(`https://wa.me/${WSP}?text=${msg}`,"_blank");
 }
 
-// ESTA ES LA QUE MANDA AL PANEL
 async function mandarCarritoAlPanel(){
   const total = carrito.reduce((s,p)=>s+p.precio,0);
   if(total===0) return;
