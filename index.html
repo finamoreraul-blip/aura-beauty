@@ -2,61 +2,226 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AURA BEAUTY - Tres Arroyos</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURA BEAUTY</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-body{font-family:Inter,sans-serif;background:#FFF9FB}
-.brico{font-family:'Bricolage Grotesque'}
-.serif{font-family:'Instrument Serif'}
-.no-scrollbar::-webkit-scrollbar{display:none}
-.card:hover{transform:translateY(-3px);transition:.2s}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:radial-gradient(1200px at 20% -10%, #1a1020 0%, #050505 55%);color:#fff;min-height:100vh}
+header{padding:22px;text-align:center;border-bottom:1px solid #161616;position:sticky;top:0;background:rgba(5,5,5,.88);backdrop-filter:blur(12px);z-index:20}
+h1{font-family:'Playfair Display',serif;font-size:34px;letter-spacing:2px;background:linear-gradient(90deg,#ff8fab,#ffc2d1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{font-size:9px;letter-spacing:7px;color:#555;margin-top:6px}
+.container{max-width:1150px;margin:0 auto;padding:18px 18px 110px}
+.search{width:100%;background:#0c0c0c;border:1px solid #1e1e1e;padding:15px 18px;border-radius:16px;color:#fff;outline:none;font-size:14px}
+.search:focus{border-color:#ff8fab}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 14px}
+.chip{border:1px solid #232323;background:#0a0a0a;padding:9px 14px;border-radius:30px;font-size:11px;cursor:pointer;transition:.2s}
+.chip.active{border-color:#10b981!important;background:rgba(16,185,129,.18)!important;color:#10b981!important;font-weight:800;box-shadow:0 0 14px rgba(16,185,129,.4);transform:scale(1.05)}
+.cats{display:flex;gap:8px;overflow:auto;padding:6px 0 10px}
+.cat{white-space:nowrap;border:1px solid #1e1e1e;background:#0a0a0a;padding:9px 15px;border-radius:22px;font-size:11px;cursor:pointer}
+.cat.active{background:#fff;color:#000;font-weight:800;border-color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:14px;margin-top:10px}
+.card{background:linear-gradient(180deg,#121212,#0c0c0c);border:1px solid #1e1e1e;border-radius:22px;overflow:hidden;position:relative}
+.imgWrap{aspect-ratio:1;background:#080808;position:relative;overflow:hidden}
+.imgWrap img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;top:10px;left:10px;background:#10b981;color:#fff;font-size:10px;font-weight:800;padding:5px 10px;border-radius:20px}
+.badge.off{background:linear-gradient(90deg,#ff4d6d,#ff8fab)}
+.info{padding:12px 12px}
+.name{font-size:13px;font-weight:700;line-height:1.2;min-height:34px}
+.cont{font-size:10px;color:#777;margin:4px 0}
+.priceRow{display:flex;align-items:center;gap:7px;margin-top:8px}
+.price{font-size:17px;font-weight:800}
+.priceOld{font-size:12px;color:#555;text-decoration:line-through}
+.offText{font-size:11px;color:#10b981;font-weight:800}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.tag{font-size:8px;padding:4px 7px;border-radius:10px;background:#161616;border:1px solid #222;color:#888}
+.btnAdd{width:100%;margin-top:10px;padding:11px;border-radius:12px;border:none;background:linear-gradient(90deg,#ff4d6d,#ff8fab);color:#fff;font-weight:800;font-size:11px;cursor:pointer;letter-spacing:.5px}
+.btnAdd:active{transform:scale(.97)}
+.cartFloat{position:fixed;bottom:20px;right:18px;left:18px;max-width:420px;margin:0 auto;background:#0f0f0f;border:1px solid #222;border-radius:20px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 20px 60px rgba(0,0,0,.7);z-index:50}
+.cartFloat span{font-size:12px;color:#aaa}
+.cartFloat b{font-size:16px}
+.btnCart{padding:11px 18px;border-radius:12px;border:none;background:#fff;color:#000;font-weight:800;font-size:12px;cursor:pointer}
+#cartModal{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99;display:none;align-items:end;justify-content:center}
+.cartBox{background:#0f0f0f;border:1px solid #222;border-radius:24px 24px 0 0;width:100%;max-width:520px;max-height:85vh;overflow:auto;padding:20px}
+.item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #151515;align-items:center}
+.item img{width:56px;height:56px;border-radius:12px;object-fit:cover;background:#080808}
+.itemName{font-size:13px;font-weight:600}
+.itemPrice{font-size:12px;color:#10b981;font-weight:800}
+.btnWsp{width:100%;padding:16px;border-radius:14px;border:none;background:linear-gradient(90deg,#10b981,#34d399);color:#fff;font-weight:800;margin-top:16px;cursor:pointer;font-size:14px}
+.btnClose{width:100%;padding:12px;border-radius:12px;border:1px solid #222;background:#0a0a0a;color:#666;margin-top:8px;cursor:pointer}
+.empty{color:#444;text-align:center;padding:40px}
 </style>
 </head>
 <body>
-<header class="sticky top-0 z-40 bg-white border-b-2 border-black">
-<div class="max-w-[1300px] mx-auto px-4 py-3 flex justify-between items-center">
-<h1 class="brico text-[28px] font-extrabold leading-none">AURA <span class="serif italic font-normal">beauty</span><span class="block text-[10px] tracking-[0.2em] opacity-60">TRES ARROYOS</span></h1>
-<button id="cartBtn" class="bg-black text-white rounded-full px-6 py-3 font-bold text-sm">CARRITO (<span id="cartCount">0</span>)</button>
-</div>
+<header>
+<h1>AURA BEAUTY</h1>
+<div class="sub">BY RAÚL FINAMORE - TRES ARROYOS</div>
 </header>
-<section class="max-w-[1300px] mx-auto p-4">
-<div class="bg-[#FFD6E7] border-2 border-black rounded-[20px] p-4 flex justify-between">
-<p class="brico font-extrabold text-sm">🔥 OFERTAS AURA</p><p class="text-xs font-bold opacity-60">Envio gratis +$15000</p>
+
+<div class="container">
+<input id="buscador" class="search" placeholder="🔍 Buscar labial, tono, colección...">
+
+<div class="chips" id="chipsColecciones">
+<div class="chip" data-tag="novedad">✨ Novedad</div>
+<div class="chip" data-tag="se-va-pronto">🔥 Se va pronto</div>
+<div class="chip" data-tag="liquidacion">💥 Liquidación</div>
+<div class="chip" data-tag="mas-vendido">⭐ Más vendido</div>
+<div class="chip" data-tag="exclusivo">💎 Exclusivo</div>
+<div class="chip" data-tag="edicion-limitada">🔒 Edición Limitada</div>
+<div class="chip" data-tag="cruelty-free">🐰 Cruelty Free</div>
+<div class="chip" data-tag="envio-gratis">🚚 Envío Gratis</div>
 </div>
-<div id="ofertas" class="flex gap-3 overflow-x-auto no-scrollbar mt-4"></div>
-<div id="filtros" class="flex gap-2 mt-6 overflow-x-auto no-scrollbar">
-<button onclick="filtrar('Todos')" data-cat="Todos" class="filter-btn bg-black text-white border-2 border-black rounded-full px-5 py-2 text-xs font-bold">TODOS</button>
-<button onclick="filtrar('Labios')" data-cat="Labios" class="filter-btn bg-white border-2 border-black rounded-full px-5 py-2 text-xs font-bold">LABIOS</button>
-<button onclick="filtrar('Rostro')" data-cat="Rostro" class="filter-btn bg-white border-2 border-black rounded-full px-5 py-2 text-xs font-bold">ROSTRO</button>
-<button onclick="filtrar('Ojos')" data-cat="Ojos" class="filter-btn bg-white border-2 border-black rounded-full px-5 py-2 text-xs font-bold">OJOS</button>
-<button onclick="filtrar('Skincare')" data-cat="Skincare" class="filter-btn bg-white border-2 border-black rounded-full px-5 py-2 text-xs font-bold">SKINCARE</button>
-<button onclick="filtrar('Accesorios')" data-cat="Accesorios" class="filter-btn bg-white border-2 border-black rounded-full px-5 py-2 text-xs font-bold">ACCESORIOS</button>
+
+<div class="cats" id="cats">
+<div class="cat active" data-cat="todos">Todos</div>
+<div class="cat" data-cat="Labiales">Labiales</div>
+<div class="cat" data-cat="Skincare">Skincare</div>
+<div class="cat" data-cat="Perfumes">Perfumes</div>
+<div class="cat" data-cat="Maquillaje">Maquillaje</div>
+<div class="cat" data-cat="Ojos">Ojos</div>
+<div class="cat" data-cat="Uñas">Uñas</div>
 </div>
-<div id="grid" class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6"></div>
-</section>
-<div id="modal" class="fixed inset-0 bg-black/70 hidden p-4 z-[60]"><div class="bg-white border-[3px] border-black rounded-[24px] max-w-[700px] mx-auto mt-12 overflow-hidden"><div id="modalContent"></div><div class="p-4"><button onclick="document.getElementById('modal').classList.add('hidden')" class="w-full border-2 border-black rounded-full py-3 font-bold">CERRAR</button></div></div></div>
-<div id="cartDrawer" class="fixed inset-0 hidden z-[70]"><div class="absolute inset-0 bg-black/50" onclick="toggleCart()"></div><div class="absolute right-0 top-0 h-full w-full max-w-[400px] bg-white border-l-[3px] border-black p-6 flex flex-col"><div class="flex justify-between items-center"><h3 class="brico text-2xl font-extrabold">TU CARRITO</h3><button onclick="toggleCart()" class="border-2 border-black rounded-full w-9 h-9 font-bold">X</button></div><div id="cartItems" class="mt-6 flex-1 overflow-y-auto space-y-3"></div><div class="mt-4 border-t-[3px] border-black pt-4"><div class="flex justify-between font-extrabold text-lg brico"><span>TOTAL</span><span id="cartTotal">$0</span></div><button onclick="checkout()" class="w-full bg-black text-white rounded-full py-4 font-extrabold mt-4">PEDIR POR WHATSAPP →</button><button onclick="cart=[];localStorage.setItem('aura_cart','[]');updateCart()" class="w-full border-2 border-black rounded-full py-2 text-xs font-bold mt-2">VACIAR</button></div></div></div>
+
+<div id="grid" class="grid"></div>
+<div id="empty" class="empty" style="display:none">No encontramos nada con ese filtro</div>
+</div>
+
+<div class="cartFloat" id="cartFloat" style="display:none">
+<div>
+<span id="cartCount">0 productos</span><br>
+<b id="cartTotal">$0</b>
+</div>
+<button class="btnCart" onclick="abrirCarrito()">VER CARRITO 🛒</button>
+</div>
+
+<div id="cartModal">
+<div class="cartBox">
+<h3 style="font-family:'Playfair Display',serif;font-size:20px;margin-bottom:10px">Tu carrito</h3>
+<div id="cartItems"></div>
+<button class="btnWsp" onclick="enviarWsp()">FINALIZAR POR WHATSAPP</button>
+<button class="btnClose" onclick="cerrarCarrito()">Seguir comprando</button>
+</div>
+</div>
+
 <script>
-const productos = [
-{id:1,nombre:"Gloss Pétala Shine",precio:5800,precioOferta:4900,categoria:"Labios",stock:10,img:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600",desc:"Brillo intenso acabado pétalo, hidratación 8hs. Tono rosado universal AURA.",caracteristicas:["Vegano","8h duración","Hidratante"],visible:true,tags:["NUEVO"]},
-{id:2,nombre:"Base Soft Glow",precio:12500,precioOferta:0,categoria:"Rostro",stock:10,img:"https://images.unsplash.com/photo-1557205465-f3768ff636b8?w=600",desc:"Base luminosa cobertura media, efecto piel real.",caracteristicas:["Cruelty free"],visible:true,tags:["TOP"]},
-{id:3,nombre:"Rubor Cremoso Aura",precio:6700,precioOferta:5900,categoria:"Rostro",stock:3,img:"https://images.unsplash.com/photo-1583209814683-c023dd53cea6?w=600",desc:"Rubor cremoso fácil de difuminar, color natural.",caracteristicas:["Vegano"],visible:true,tags:[]},
-{id:4,nombre:"Máscara Volumen X",precio:8900,precioOferta:0,categoria:"Ojos",stock:10,img:"https://images.unsplash.com/photo-1631214524115-6f33d2c4a36c?w=600",desc:"Pestañas XXL sin grumos.",caracteristicas:["A prueba de agua"],visible:true,tags:[]}
-];
-let cart = JSON.parse(localStorage.getItem('aura_cart')||'[]');
-let categoriaActiva='Todos';
-function filtrar(cat){categoriaActiva=cat;document.querySelectorAll('.filter-btn').forEach(b=>{if(b.dataset.cat===cat){b.className="filter-btn bg-black text-white border-2 border-black rounded-full px-5 py-2 text-xs font-bold"}else{b.className="filter-btn bg-white border-2 border-black rounded-full px-5 py-2 text-xs font-bold"}});render()}
-function render(){document.getElementById('ofertas').innerHTML=productos.filter(p=>p.visible&&p.precioOferta>0).map(p=>`<div class="min-w-[160px] bg-white border-2 border-black rounded-[16px] overflow-hidden cursor-pointer shrink-0 card" onclick="openModal(${p.id})"><div class="relative"><img src="${p.img}" class="w-full h-28 object-cover"><span class="absolute top-2 left-2 bg-black text-white text-[9px] font-bold rounded-full px-2 py-1">🔥 OFERTA</span></div><div class="p-2"><p class="brico text-[11px] font-bold leading-tight truncate">${p.nombre}</p><div class="flex gap-1 items-center mt-1"><p class="text-[13px] font-extrabold">$${p.precioOferta.toLocaleString('es-AR')}</p><p class="text-[10px] line-through opacity-40">$${p.precio.toLocaleString('es-AR')}</p></div></div></div>`).join('');const lista=productos.filter(p=>p.visible&&(categoriaActiva==='Todos'||p.categoria===categoriaActiva));document.getElementById('grid').innerHTML=lista.map(p=>`<div class="bg-white border-2 border-black rounded-[20px] overflow-hidden cursor-pointer card" onclick="openModal(${p.id})"><div class="relative bg-zinc-50"><img src="${p.img}" class="w-full h-56 md:h-64 object-cover"><div class="absolute top-2 left-2 flex gap-1 flex-wrap">${p.tags.includes('NUEVO')?'<span class="bg-[#FFD6E7] border border-black text-[9px] font-bold rounded-full px-2 py-1">NUEVO</span>':''}${p.tags.includes('TOP')?'<span class="bg-black text-white text-[9px] font-bold rounded-full px-2 py-1">TOP</span>':''}${p.precioOferta>0?'<span class="bg-black text-white text-[9px] font-bold rounded-full px-2 py-1">-'+Math.round((1-p.precioOferta/p.precio)*100)+'%</span>':''}</div>${p.stock<=3&&p.stock>0?'<span class="absolute bottom-2 left-2 bg-white border-2 border-black text-[9px] font-bold rounded-full px-2 py-1">¡Últimas!</span>':''}</div><div class="p-3"><p class="text-[10px] opacity-50 font-bold tracking-widest">${p.categoria.toUpperCase()}</p><p class="brico font-bold text-[14px] leading-[1.1] mt-1 h-[34px] overflow-hidden">${p.nombre}</p><div class="flex items-end justify-between mt-2"><div>${p.precioOferta>0?`<p class="font-extrabold text-[16px]">$${p.precioOferta.toLocaleString('es-AR')}</p><p class="text-[11px] line-through opacity-40">$${p.precio.toLocaleString('es-AR')}</p>`:`<p class="font-extrabold text-[16px]">$${p.precio.toLocaleString('es-AR')}</p>`}</div><button class="bg-black text-white rounded-full w-9 h-9 font-bold">+</button></div></div></div>`).join('');document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0)}
-function openModal(id){const p=productos.find(x=>x.id===id);document.getElementById('modalContent').innerHTML=`<img src="${p.img}" class="w-full h-[380px] object-cover"><div class="p-6"><p class="text-[11px] font-bold tracking-widest opacity-50">${p.categoria.toUpperCase()}</p><h2 class="brico text-[28px] font-extrabold leading-[0.95] mt-2">${p.nombre}</h2><div class="mt-4">${p.precioOferta>0?`<div class="flex gap-2 items-center"><p class="text-[28px] font-extrabold">$${p.precioOferta.toLocaleString('es-AR')}</p><p class="line-through opacity-40">$${p.precio.toLocaleString('es-AR')}</p></div>`:`<p class="text-[28px] font-extrabold">$${p.precio.toLocaleString('es-AR')}</p>`}</div><p class="text-sm opacity-70 mt-4">${p.desc}</p><div class="flex flex-wrap gap-1 mt-3">${(p.caracteristicas||[]).map(c=>`<span class="border-2 border-black rounded-full px-3 py-1 text-[10px] font-bold">${c}</span>`).join('')}</div><button onclick="addToCart(${p.id});document.getElementById('modal').classList.add('hidden')" class="w-full bg-black text-white rounded-full py-4 font-extrabold brico mt-6">AGREGAR AL CARRITO →</button></div>`;document.getElementById('modal').classList.remove('hidden')}
-function addToCart(id){const p=productos.find(x=>x.id===id);const price=p.precioOferta||p.precio;const f=cart.find(x=>x.id===id);if(f)f.qty++;else cart.push({...p,qty:1,price});localStorage.setItem('aura_cart',JSON.stringify(cart));updateCart()}
-function updateCart(){document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('cartItems').innerHTML=cart.map((c,i)=>`<div class="flex gap-3 py-2 border-b"><img src="${c.img}" class="w-14 h-14 rounded border-2 border-black object-cover"><div class="flex-1"><p class="brico font-bold text-xs">${c.nombre}</p><p class="text-xs">$${c.price.toLocaleString('es-AR')} x ${c.qty}</p><div class="flex gap-1 mt-1"><button onclick="cart[${i}].qty--;if(cart[${i}].qty<=0)cart.splice(${i},1);localStorage.setItem('aura_cart',JSON.stringify(cart));updateCart()" class="border-2 border-black rounded-full w-6 h-6 text-xs font-bold">-</button><button onclick="cart[${i}].qty++;localStorage.setItem('aura_cart',JSON.stringify(cart));updateCart()" class="border-2 border-black rounded-full w-6 h-6 text-xs font-bold">+</button></div></div><button onclick="cart.splice(${i},1);localStorage.setItem('aura_cart',JSON.stringify(cart));updateCart()" class="text-[10px] opacity-40">X</button></div>`).join('')||'<p class="text-sm opacity-50 text-center py-10">Carrito vacío</p>';document.getElementById('cartTotal').innerText='$'+cart.reduce((a,b)=>a+b.price*b.qty,0).toLocaleString('es-AR')}
-function toggleCart(){document.getElementById('cartDrawer').classList.toggle('hidden');updateCart()}
-function checkout(){if(cart.length===0)return;let m="Hola AURA BEAUTY!%0A%0AQuiero:%0A"+cart.map(c=>"- "+c.nombre+" x"+c.qty+" ($"+(c.price*c.qty)+")").join('%0A')+"%0ATOTAL: "+document.getElementById('cartTotal').innerText;window.open("https://wa.me/5492983389710?text="+m,'_blank')}
-document.getElementById('cartBtn').onclick=toggleCart;
-document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')e.target.classList.add('hidden')};
-updateCart();render();
+const WSP = "5492983389710";
+let productos=[];
+let filtroCat="todos";
+let filtroTags=[];
+let texto="";
+let carrito=JSON.parse(localStorage.getItem("aura_cart")||"[]");
+
+async function cargar(){
+  try{
+    const r=await fetch("https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/productos.json?t="+Date.now());
+    productos=await r.json();
+    render();
+    updateFloat();
+  }catch(e){
+    document.getElementById("grid").innerHTML="<div class='empty'>Error cargando. Verificá productos.json</div>";
+  }
+}
+
+function render(){
+  const grid=document.getElementById("grid");
+  let lista=[...productos].reverse();
+  if(filtroCat!=="todos") lista=lista.filter(p=>p.categoria===filtroCat);
+  if(filtroTags.length>0) lista=lista.filter(p=>p.tags && filtroTags.some(t=>p.tags.includes(t)));
+  if(texto){
+    const q=texto.toLowerCase();
+    lista=lista.filter(p=> (p.nombre+" "+(p.tono||"")+" "+(p.categoria||"")+" "+(p.tags||[]).join(" ")).toLowerCase().includes(q));
+  }
+  if(lista.length===0){ grid.innerHTML=""; document.getElementById("empty").style.display="block"; return; }
+  document.getElementById("empty").style.display="none";
+  grid.innerHTML=lista.map(p=>{
+    const tieneDesc=p.precioTachado && p.precioTachado>p.precio;
+    const porc=tieneDesc? Math.round(100-(p.precio*100/p.precioTachado)) : (p.descuento||0);
+    return `<div class="card">
+      <div class="imgWrap">
+        <img src="${p.imagen}" loading="lazy">
+        ${porc>0? `<div class="badge off">-${porc}% OFF</div>` : (p.tags?.includes('novedad')? `<div class="badge">NUEVO</div>` : '')}
+      </div>
+      <div class="info">
+        <div class="name">${p.nombre}</div>
+        <div class="cont">${p.contenido||""} ${p.tono? "• "+p.tono : ""}</div>
+        <div class="priceRow">
+          <span class="price">$${p.precio}</span>
+          ${tieneDesc? `<span class="priceOld">$${p.precioTachado}</span><span class="offText">-${porc}%</span>` : ""}
+        </div>
+        ${p.tags?.length? `<div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div>` : ""}
+        <button class="btnAdd" onclick="addCart(${p.id})">AGREGAR AL CARRITO</button>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+function addCart(id){
+  const p=productos.find(x=>x.id===id);
+  if(!p) return;
+  carrito.push(p);
+  localStorage.setItem("aura_cart",JSON.stringify(carrito));
+  updateFloat();
+  // animación
+  const f=document.getElementById("cartFloat");
+  f.style.transform="scale(1.05)"; setTimeout(()=>f.style.transform="scale(1)",150);
+}
+
+function updateFloat(){
+  const f=document.getElementById("cartFloat");
+  if(carrito.length===0){ f.style.display="none"; return; }
+  f.style.display="flex";
+  const total=carrito.reduce((s,p)=>s+p.precio,0);
+  document.getElementById("cartCount").innerText=carrito.length+" productos";
+  document.getElementById("cartTotal").innerText="$"+total;
+  renderCartItems();
+}
+
+function renderCartItems(){
+  const box=document.getElementById("cartItems");
+  if(carrito.length===0){ box.innerHTML="<div class='empty'>Carrito vacío</div>"; return; }
+  box.innerHTML=carrito.map((p,i)=>`<div class="item">
+    <img src="${p.imagen}">
+    <div style="flex:1">
+      <div class="itemName">${p.nombre}</div>
+      <div class="itemPrice">$${p.precio} ${p.precioTachado? `<span style="color:#555;text-decoration:line-through;font-weight:400">$${p.precioTachado}</span>` : ""}</div>
+    </div>
+    <span onclick="removeItem(${i})" style="cursor:pointer;color:#444">✕</span>
+  </div>`).join("");
+}
+
+function removeItem(i){ carrito.splice(i,1); localStorage.setItem("aura_cart",JSON.stringify(carrito)); updateFloat(); }
+function abrirCarrito(){ document.getElementById("cartModal").style.display="flex"; renderCartItems(); }
+function cerrarCarrito(){ document.getElementById("cartModal").style.display="none"; }
+
+function enviarWsp(){
+  if(carrito.length===0) return;
+  const total=carrito.reduce((s,p)=>s+p.precio,0);
+  let msg="Hola Aura Beauty! Quiero comprar:%0A";
+  carrito.forEach(p=>{ msg+=`• ${p.nombre} - $${p.precio}${p.tono? " ("+p.tono+")":""}%0A`; });
+  msg+=`%0ATotal: $${total}%0A%0AEnvío a Tres Arroyos?`;
+  window.open(`https://wa.me/${WSP}?text=${msg}`,"_blank");
+}
+
+document.getElementById("buscador").addEventListener("input",e=>{ texto=e.target.value; render(); });
+document.querySelectorAll(".chip").forEach(ch=>{
+  ch.addEventListener("click",()=>{
+    ch.classList.toggle("active");
+    const t=ch.dataset.tag;
+    if(ch.classList.contains("active")){ if(!filtroTags.includes(t)) filtroTags.push(t); }
+    else{ filtroTags=filtroTags.filter(x=>x!==t); }
+    render();
+  });
+});
+document.querySelectorAll(".cat").forEach(c=>{
+  c.addEventListener("click",()=>{
+    document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));
+    c.classList.add("active");
+    filtroCat=c.dataset.cat;
+    render();
+  });
+});
+
+cargar();
 </script>
 </body>
 </html>
