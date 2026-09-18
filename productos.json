@@ -45,5 +45,29 @@
     "ingredientes": "Esponjitas para maquillar.\nVariedad de colores",
     "modoUso": "",
     "fecha": "2026-09-18T16:26:44.420Z"
+  },
+  {
+    "id": 1789749131906,
+    "nombre": "Set de mini brochas x8",
+    "precio": 6000,
+    "precioTachado": 8000,
+    "descuento": 25,
+    "stock": 10,
+    "contenido": "X8",
+    "tono": "Varios",
+    "acabado": "Mate",
+    "categoria": "Maquillaje",
+    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789748944840_1001188238.jpg",
+    "tags": [
+      "mas-vendido",
+      "novedad"
+    ],
+    "aroma": "",
+    "cobertura": "",
+    "duracion": "",
+    "tipoPiel": "",
+    "ingredientes": "Set de mini brochas.\nVarios colores",
+    "modoUso": "",
+    "fecha": "2026-09-18T16:32:11.908Z"
   }
 ]
