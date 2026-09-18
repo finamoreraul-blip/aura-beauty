@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": 1789748405652,
+    "nombre": "Espejo ",
+    "precio": 4000,
+    "precioTachado": 5000,
+    "descuento": 20,
+    "stock": 6,
+    "contenido": "...",
+    "tono": "...",
+    "acabado": "Metalizado",
+    "categoria": "Maquillaje",
+    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789748335257_1001187973.jpg",
+    "tags": [
+      "novedad",
+      "edicion-limitada"
+    ],
+    "aroma": "",
+    "cobertura": "",
+    "duracion": "",
+    "tipoPiel": "",
+    "ingredientes": "Espejos super resistentes ",
+    "modoUso": "",
+    "fecha": "2026-09-18T16:20:05.656Z"
+  }
+]
