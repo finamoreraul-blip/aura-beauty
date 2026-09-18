@@ -129,6 +129,9 @@
     "acabado": "Mate",
     "categoria": "Skincare",
     "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789754684429_1001188027.jpg",
+    "imagenes": [
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758061221_0_1001188042.jpg"
+    ],
     "tags": [
       "novedad"
     ],
@@ -138,6 +141,6 @@
     "tipoPiel": "",
     "ingredientes": "Parches para acné con motivos de: frutas, animales, corazones.",
     "modoUso": "Adhesivo",
-    "fecha": "2026-09-18T18:05:03.690Z"
+    "fecha": "2026-09-18T19:01:20.233Z"
   }
 ]
