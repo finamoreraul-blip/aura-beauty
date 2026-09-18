@@ -71,29 +71,6 @@
     "fecha": "2026-09-18T16:32:11.908Z"
   },
   {
-    "id": 1789749347751,
-    "nombre": "Parches para acné x36 unidades",
-    "precio": 3000,
-    "precioTachado": 3000,
-    "descuento": 0,
-    "stock": 10,
-    "contenido": "36",
-    "tono": "Indefinido",
-    "acabado": "Mate",
-    "categoria": "Skincare",
-    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789749167039_1001188042.jpg",
-    "tags": [
-      "novedad"
-    ],
-    "aroma": "",
-    "cobertura": "Full Cover",
-    "duracion": "Larga duración",
-    "tipoPiel": "",
-    "ingredientes": "Parches para acné con motivos de: frutas, animales, corazones.",
-    "modoUso": "Adhesivo",
-    "fecha": "2026-09-18T17:55:56.608Z"
-  },
-  {
     "id": 1789754381826,
     "nombre": "Arqueador de pestañas ",
     "precio": 2550,
@@ -139,5 +116,28 @@
     "ingredientes": "Set de 3 perfiladores ",
     "modoUso": "",
     "fecha": "2026-09-18T18:01:40.370Z"
+  },
+  {
+    "id": 1789749347751,
+    "nombre": "Parches para acné x36 unidades",
+    "precio": 3000,
+    "precioTachado": 3000,
+    "descuento": 0,
+    "stock": 10,
+    "contenido": "36",
+    "tono": "Indefinido",
+    "acabado": "Mate",
+    "categoria": "Skincare",
+    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789754684429_1001188027.jpg",
+    "tags": [
+      "novedad"
+    ],
+    "aroma": "",
+    "cobertura": "Full Cover",
+    "duracion": "Larga duración",
+    "tipoPiel": "",
+    "ingredientes": "Parches para acné con motivos de: frutas, animales, corazones.",
+    "modoUso": "Adhesivo",
+    "fecha": "2026-09-18T18:05:03.690Z"
   }
 ]
