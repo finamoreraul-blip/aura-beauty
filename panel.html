@@ -1,187 +1,260 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AURA IA EDITOR V6.1</title>
+<title>AURA EDITOR V8.2 GALERIA + CARRITOS</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',sans-serif;background:#050505;color:#fff;padding:20px;display:flex;flex-direction:column;align-items:center}
 h1{font-family:'Playfair Display',serif;font-size:28px;background:linear-gradient(90deg,#ff8fab,#ffc2d1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;text-align:center}
 .sub{font-size:9px;letter-spacing:6px;color:#444;margin:6px 0 24px}
-.card{width:100%;max-width:600px;background:#101010;border:1px solid #1e1e1e;border-radius:24px;padding:24px;margin-bottom:16px}
-.label{font-size:10px;letter-spacing:2px;color:#ff8fab;font-weight:800;margin:16px 0 6px;display:flex;justify-content:space-between;align-items:center}
-.label span{color:#666;font-size:9px;cursor:pointer}
+.card{width:100%;max-width:640px;background:#101010;border:1px solid #1e1e1e;border-radius:24px;padding:24px;margin-bottom:16px}
+.label{font-size:10px;letter-spacing:2px;color:#ff8fab;font-weight:800;margin:16px 0 6px;display:flex;justify-content:space-between}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-input,textarea,select{width:100%;background:#080808;border:1px solid #222;color:#fff;padding:13px;border-radius:11px;outline:none;font-size:14px;transition:.2s}
-input.enmarcado,textarea.enmarcado,select.enmarcado{border:2px solid #ff8fab;box-shadow:0 0 15px rgba(255,143,171,.3)}
-#dropZone{border:2px dashed #2a2a2a;border-radius:18px;min-height:300px;background:#080808;display:flex;align-items:center;justify-content:center;flex-direction:column;position:relative;overflow:hidden;cursor:pointer}
+input,textarea,select{width:100%;background:#080808;border:1px solid #222;color:#fff;padding:13px;border-radius:11px;outline:none;font-size:14px}
+#dropZone{border:2px dashed #2a2a2a;border-radius:18px;min-height:280px;background:#080808;display:flex;align-items:center;justify-content:center;flex-direction:column;position:relative;overflow:hidden;cursor:pointer}
 #preview{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
 #dropContent{z-index:2;text-align:center;background:rgba(0,0,0,.7);padding:10px 16px;border-radius:14px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.chip{border:1px solid #2a2a2a;background:#0a0a0a;padding:8px 13px;border-radius:30px;font-size:11px;cursor:pointer}
-.chip.active{border-color:#ff8fab;background:#ff8fab22;color:#ff8fab}
-.chip input{display:none}
+.chip{border:1px solid #2a2a2a;background:#0a0a0a;padding:8px 13px;border-radius:30px;font-size:11px;cursor:pointer;transition:.2s;user-select:none}
+.chip.active{border-color:#10b981!important;background:rgba(16,185,129,.20)!important;color:#10b981!important;font-weight:800;box-shadow:0 0 14px rgba(16,185,129,.4);transform:scale(1.05)}
 .btn-main{width:100%;padding:17px;border-radius:13px;border:none;font-weight:800;background:linear-gradient(90deg,#ff4d6d,#ff8fab);color:#fff;margin-top:22px;cursor:pointer}
 .btn-sec{width:100%;padding:12px;border-radius:11px;border:1px solid #222;background:#0a0a0a;color:#666;margin-top:10px;cursor:pointer;font-size:11px}
 .btn-google{width:100%;padding:12px;border-radius:11px;border:1px solid #4285f4;background:rgba(66,133,244,.1);color:#4285f4;margin-top:10px;cursor:pointer;font-size:11px;font-weight:700;display:none}
 .msg{margin-top:12px;padding:11px;border-radius:10px;text-align:center;font-size:12px;display:none}
 .ok{display:block;background:#10b98115;color:#10b981;border:1px solid #10b98122}
 .err{display:block;background:#ef444415;color:#ef4444;border:1px solid #ef444422}
-#editorModal{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:999;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px}
-#editorCanvas{max-width:90%;max-height:60vh;border-radius:12px}
-.editorControls{margin-top:15px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.editorControls button,.editorControls input{padding:10px 14px;border-radius:10px;border:1px solid #333;background:#111;color:#fff;font-size:12px}
+.tab{padding:10px 16px;border-radius:20px;border:1px solid #222;background:#0a0a0a;color:#666;font-size:11px;cursor:pointer;white-space:nowrap}
+.tab.active{background:#fff;color:#000;font-weight:800;border-color:#fff}
+#editorModal{position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(14px);z-index:99;display:none;align-items:center;justify-content:center;padding:18px}
+.editorBox{background:#151515;border:1px solid #222;border-radius:22px;width:100%;max-width:480px;padding:18px}
+.editPreview{width:100%;aspect-ratio:1;background:#080808;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.editPreview img{max-width:100%;max-height:100%;object-fit:contain}
+.rangeRow{display:flex;align-items:center;gap:10px;margin:8px 0}
+.rangeRow span{font-size:10px;color:#888;min-width:60px}
+.rangeRow input{flex:1}
+/* AGREGADO V8.2 GALERIA */
+#extraGallery{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-top:10px}
+.extraBox{border:1px dashed #2a2a2a;border-radius:10px;height:90px;background:#080808;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;cursor:pointer;font-size:9px;color:#555;text-align:center}
+.extraBox img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
 </style>
 </head>
 <body>
 <h1>AURA IA EDITOR</h1>
-<p class="sub">V6.1 - CON EDITOR + GOOGLE</p>
-
+<p class="sub">V8.2 - GALERIA + CARRITOS VIVO</p>
 <div class="card">
-<span class="label">📸 FOTO <span onclick="document.getElementById('nombre').classList.toggle('enmarcado')">📌 Enmarcar</span></span>
+<span class="label">📸 FOTO PRINCIPAL</span>
 <div id="dropZone" onclick="document.getElementById('fileInput').click()">
 <img id="preview">
 <div id="dropContent">👆 TOCA PARA GALERÍA</div>
 </div>
 <input type="file" id="fileInput" accept="image/*" style="display:none">
 
-<button class="btn-sec" id="btnEditor" style="display:none" onclick="abrirEditor()">🎨 EDITOR DE FOTO - RECORTAR / BRILLO</button>
-<button class="btn-google" id="btnGoogle" onclick="buscarGoogle()">🔍 BUSCAR EN GOOGLE CARACTERÍSTICAS DE ESTA FOTO</button>
-
-<span class="label">NOMBRE <span onclick="document.getElementById('nombre').classList.toggle('enmarcado')">📌 Enmarcar</span></span>
-<input id="nombre" placeholder="Ej: Labial Velvet Rosa">
-
-<div class="row">
-<div><span class="label">PRECIO <span onclick="document.getElementById('precio').classList.toggle('enmarcado')">📌</span></span><input id="precio" type="number" placeholder="5500"></div>
-<div><span class="label">DESCUENTO</span><select id="descuento"><option value="0">Ninguno</option><option value="10">10%</option><option value="20">20%</option><option value="30">30%</option><option value="40">40%</option><option value="50">50%</option><option value="60">60%</option><option value="70">70%</option></select></div>
+<!-- GALERIA EXTRA AGREGADA -->
+<span class="label">📸 GALERIA EXTRA - 4 FOTOS TIPO ML <span style="color:#666;font-size:8px;cursor:pointer" onclick="extras=[];document.querySelectorAll('#extraGallery img').forEach(i=>{i.style.display='none';i.src=''});document.querySelectorAll('#extraGallery span').forEach(s=>s.style.display='block')">🗑️ Limpiar</span></span>
+<input type="file" id="fileExtra" accept="image/*" multiple style="display:none">
+<div id="extraGallery">
+<div class="extraBox" onclick="document.getElementById('fileExtra').click()"><span>+ Foto 2</span><img id="ex0"></div>
+<div class="extraBox" onclick="document.getElementById('fileExtra').click()"><span>+ Foto 3</span><img id="ex1"></div>
+<div class="extraBox" onclick="document.getElementById('fileExtra').click()"><span>+ Foto 4</span><img id="ex2"></div>
+<div class="extraBox" onclick="document.getElementById('fileExtra').click()"><span>+ Foto 5</span><img id="ex3"></div>
 </div>
 
-<div class="row">
-<div><span class="label">STOCK <span onclick="document.getElementById('stock').classList.toggle('enmarcado')">📌</span></span><input id="stock" type="number" placeholder="12"></div>
-<div><span class="label">CONTENIDO</span><input id="contenido" placeholder="15ml"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+<button class="btn-sec" id="btnEditor" style="display:none" onclick="abrirEditor()">🎨 EDITAR FOTO</button>
+<button class="btn-google" id="btnGoogle" onclick="buscarGoogleReal()">🔍 BUSCAR EN GOOGLE</button>
 </div>
-
-<div class="row">
-<div><span class="label">TONO</span><input id="tono" placeholder="Rosa #02"></div>
-<div><span class="label">ACABADO</span><select id="acabado"><option>Mate</option><option>Brilloso</option><option>Satinado</option><option>Cremoso</option><option>Metalizado</option></select></div>
+<span class="label">NOMBRE</span><input id="nombre" placeholder="Ej: Labial Velvet">
+<span class="label">💰 PRECIOS - SE CALCULA SOLO <span style="color:#666;font-size:8px">Poné 2 y calculo el 3ro</span></span>
+<div class="row"><div><span class="label">TACHADO (antes)</span><input id="precioTachado" type="number" placeholder="8000" oninput="calcPrecios('tachado')"></div><div><span class="label">DESC %</span><select id="descuento" onchange="calcPrecios('desc')"><option value="0">0%</option><option value="10">10%</option><option value="15">15%</option><option value="20">20%</option><option value="25">25%</option><option value="30">30%</option><option value="40">40%</option><option value="50">50%</option><option value="60">60%</option></select></div></div>
+<span class="label">PRECIO ACTUAL (ahora) <span id="calcInfo" style="color:#10b981;font-size:9px"></span></span><input id="precio" type="number" placeholder="5500" oninput="calcPrecios('actual')">
+<div class="row"><div><span class="label">STOCK</span><input id="stock" type="number" value="10"></div><div><span class="label">CONTENIDO</span><input id="contenido" placeholder="15ml"></div></div>
+<div class="row"><div><span class="label">TONO</span><input id="tono" placeholder="Rojo 01"></div><div><span class="label">ACABADO</span><select id="acabado"><option>Mate</option><option>Brilloso</option><option>Satinado</option><option>Cremoso</option><option>Metalizado</option><option>Gloss</option></select></div></div>
+<span class="label">✨ CARACTERÍSTICAS EXTRA - TIPO MERCADO LIBRE</span>
+<div class="row"><div><span class="label">AROMA</span><select id="aroma"><option value="">Sin aroma</option><option>Vainilla</option><option>Coco</option><option>Floral</option><option>Cítrico</option><option>Dulce</option><option>Fresco</option></select></div><div><span class="label">COBERTURA</span><select id="cobertura"><option value="">Normal</option><option>Ligera</option><option>Media</option><option>Alta</option><option>Full Cover</option></select></div></div>
+<div class="row"><div><span class="label">DURACIÓN</span><select id="duracion"><option value="">Normal</option><option>8hs</option><option>12hs</option><option>24hs</option><option>Larga duración</option><option>A prueba de agua</option></select></div><div><span class="label">TIPO PIEL</span><select id="tipoPiel"><option value="">Todo tipo</option><option>Grasa</option><option>Seca</option><option>Mixta</option><option>Sensible</option></select></div></div>
+<span class="label">INGREDIENTES / DETALLES</span><textarea id="ingredientes" rows="2" placeholder="Ej: Ácido hialurónico, vitamina E..."></textarea>
+<span class="label">MODO DE USO</span><textarea id="modoUso" rows="2" placeholder="Ej: Aplicar con brocha..."></textarea>
+<span class="label">CATEGORÍA</span><select id="categoria"><option>Labiales</option><option>Skincare</option><option>Perfumes</option><option>Maquillaje</option><option>Ojos</option><option>Uñas</option></select>
+<span class="label">🏷️ COLECCIONES - TOCA PARA VERDE</span>
+<div class="chips" id="chipsPanel">
+<div class="chip" data-value="novedad">✨ Novedad</div>
+<div class="chip" data-value="se-va-pronto">🔥 Se va pronto</div>
+<div class="chip" data-value="liquidacion">💥 Liquidación</div>
+<div class="chip" data-value="mas-vendido">⭐ Más vendido</div>
+<div class="chip" data-value="exclusivo">💎 Exclusivo</div>
+<div class="chip" data-value="edicion-limitada">🔒 Edición Limitada</div>
+<div class="chip" data-value="cruelty-free">🐰 Cruelty Free</div>
+<div class="chip" data-value="envio-gratis">🚚 Envío Gratis</div>
 </div>
-
-<span class="label">CATEGORÍA</span>
-<select id="categoria"><option>Labiales</option><option>Skincare</option><option>Perfumes</option><option>Maquillaje</option><option>Ojos</option><option>Uñas</option></select>
-
-<span class="label">TIPO PIEL</span>
-<select id="piel"><option>Todo tipo</option><option>Grasa</option><option>Seca</option><option>Mixta</option><option>Sensible</option></select>
-
-<span class="label">CARACTERÍSTICAS - IA <span onclick="document.querySelectorAll('#car1,#car2,#ingredientes').forEach(e=>e.classList.toggle('enmarcado'))">📌 Enmarcar todas</span></span>
-<input id="car1" placeholder="Larga duración 12hs">
-<input id="car2" placeholder="Hipoalergénico" style="margin-top:6px">
-<input id="ingredientes" placeholder="Ingredientes clave" style="margin-top:6px">
-<textarea id="modo" rows="2" placeholder="Modo de uso" style="margin-top:6px"></textarea>
-<textarea id="desc" rows="2" placeholder="Descripción" style="margin-top:6px"></textarea>
-
-<span class="label">🏷️ COLECCIONES</span>
-<div class="chips">
-<label class="chip"><input type="checkbox" value="novedad">✨ Novedad</label>
-<label class="chip"><input type="checkbox" value="se-va-pronto">🔥 Se va pronto</label>
-<label class="chip"><input type="checkbox" value="liquidacion">💥 Liquidación</label>
-<label class="chip"><input type="checkbox" value="mas-vendido">⭐ Más vendido</label>
-<label class="chip"><input type="checkbox" value="exclusivo">💎 Exclusivo</label>
-<label class="chip"><input type="checkbox" value="edicion-limitada">🔒 Edición Limitada</label>
-<label class="chip"><input type="checkbox" value="cruelty-free">🐰 Cruelty Free</label>
-<label class="chip"><input type="checkbox" value="envio-gratis">🚚 Envío Gratis</label>
-</div>
-
 <button class="btn-main" id="btnPubli" onclick="publicar()">💾 GUARDAR Y SUBIR EN VIVO</button>
 <div id="msg" class="msg"></div>
-<button class="btn-sec" onclick="window.open('https://finamoreraul-blip.github.io/aura-beauty/','_blank')">🔗 VER MI TIENDA</button>
+<button class="btn-sec" onclick="window.open('https://finamoreraul-blip.github.io/aura-beauty/','_blank')">🔗 VER TIENDA</button>
+<div style="text-align:center;margin-top:12px"><span onclick="renovarToken()" style="font-size:9px;color:#555;cursor:pointer;text-decoration:underline">🔑 RENOVAR TOKEN</span></div>
 
-<div style="text-align:center;margin-top:18px">
-  <span onclick="renovarToken()" style="font-size:9px;letter-spacing:2px;color:#555;cursor:pointer;text-decoration:underline">🔑 RENOVAR TOKEN</span>
+<div style="margin-top:28px;border-top:1px solid #1a1a1a;padding-top:20px">
+<span class="label">📊 HISTORIAL REAL + TENDENCIAS</span>
+<div class="row" style="margin-bottom:14px"><div style="background:#080808;border:1px solid #1e1e1e;border-radius:12px;padding:12px;text-align:center"><div style="font-size:22px;font-weight:800;color:#10b981" id="cActivos">0</div><div style="font-size:9px;color:#666">ACTIVOS</div></div><div style="background:#080808;border:1px solid #1e1e1e;border-radius:12px;padding:12px;text-align:center"><div style="font-size:22px;font-weight:800;color:#8b5cf6" id="cVendidos">0</div><div style="font-size:9px;color:#666">VENDIDAS</div></div></div>
+<div class="row" style="margin-bottom:14px"><div style="background:#080808;border:1px solid #1e1e1e;border-radius:12px;padding:12px;text-align:center"><div style="font-size:22px;font-weight:800;color:#ff4d6d" id="cEliminados">0</div><div style="font-size:9px;color:#666">ELIMINADOS</div></div><div style="background:#080808;border:1px solid #1e1e1e;border-radius:12px;padding:12px;text-align:center"><div style="font-size:22px;font-weight:800;color:#f59e0b" id="cEditados">0</div><div style="font-size:9px;color:#666">EDITADOS</div></div></div>
+<div style="display:flex;gap:8px;overflow:auto;margin-bottom:12px"><div class="tab active" onclick="switchTab('activos',this)">Activos</div><div class="tab" onclick="switchTab('vendidos',this)">🔥 Vendidos</div><div class="tab" onclick="switchTab('eliminados',this)">🗑️ Eliminados</div><div class="tab" onclick="switchTab('editados',this)">✏️ Precios</div></div>
+<div id="listaHistorial" style="display:grid;gap:10px;max-height:700px;overflow:auto"></div>
+<button class="btn-sec" onclick="cargarHistorial()">🔄 ACTUALIZAR HISTORIAL</button>
+</div>
+
+<div style="margin-top:28px;border-top:1px solid #1a1a1a;padding-top:20px">
+<span class="label">🛒 CARRITOS EN VIVO - TRES ARROYOS <span style="color:#10b981;font-size:8px">● EN VIVO</span></span>
+<div class="row" style="margin-bottom:12px"><div style="background:#080808;border:1px solid #1e1e1e;border-radius:12px;padding:12px;text-align:center"><div style="font-size:22px;font-weight:800;color:#ff8fab" id="cCarritos">0</div><div style="font-size:9px;color:#666">CARRITOS</div><div style="font-size:8px;color:#333">cada 10s</div></div><div style="background:#080808;border:1px solid #1e1e1e;border-radius:12px;padding:12px;text-align:center"><div style="font-size:22px;font-weight:800;color:#10b981" id="cCarritosVal">$0</div><div style="font-size:9px;color:#666">ABANDONADO</div><div style="font-size:8px;color:#333">potencial</div></div></div>
+<div id="listaCarritos" style="display:grid;gap:10px;max-height:600px;overflow:auto"></div>
+<button class="btn-sec" onclick="cargarCarritos()">🔄 ACTUALIZAR CARRITOS</button>
+<div style="font-size:9px;color:#444;margin-top:8px;text-align:center">Para que se guarde, creá el archivo <b>carritos.json</b> con <b>[]</b> en tu repo aura-beauty</div>
 </div>
 
 </div>
 
-<div id="editorModal">
-<img id="editorImg" style="max-width:90%;max-height:60vh;border-radius:12px;display:none">
-<canvas id="editorCanvas"></canvas>
-<div class="editorControls">
-<label>Brillo <input type="range" id="brillo" min="0" max="200" value="100"></label>
-<label>Contraste <input type="range" id="contraste" min="0" max="200" value="100"></label>
-<button onclick="rotar()">🔄 Rotar</button>
-<button onclick="aplicarFiltro('bw')">⚫ B/N</button>
-<button onclick="guardarEdicion()" style="background:#ff4d6d;color:white;border:none;font-weight:800">✅ APLICAR</button>
-<button onclick="cerrarEditor()">❌ Cerrar</button>
-</div>
-</div>
+<div id="editorModal"><div class="editorBox"><h3 style="font-size:16px;margin-bottom:12px">🎨 Editar foto</h3><div class="editPreview"><img id="editImg"></div><div class="rangeRow"><span>Brillo</span><input type="range" id="rBrillo" min="0" max="200" value="100" oninput="aplicarFiltros()"><span id="vBrillo" style="font-size:10px;color:#666">100%</span></div><div class="rangeRow"><span>Contraste</span><input type="range" id="rContraste" min="0" max="200" value="100" oninput="aplicarFiltros()"><span id="vContraste" style="font-size:10px;color:#666">100%</span></div><div class="rangeRow"><span>Saturación</span><input type="range" id="rSat" min="0" max="200" value="100" oninput="aplicarFiltros()"><span id="vSat" style="font-size:10px;color:#666">100%</span></div><div class="rangeRow"><span>Calidez</span><input type="range" id="rCalidez" min="-50" max="50" value="0" oninput="aplicarFiltros()"><span id="vCalidez" style="font-size:10px;color:#666">0</span></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px"><button class="btn-sec" onclick="resetFiltros()">↺ Reset</button><button class="btn-main" style="margin-top:0" onclick="guardarEdicion()">✅ Aplicar</button></div><button class="btn-sec" onclick="cerrarEditor()">Cerrar sin guardar</button></div></div>
 
 <script>
 const REPO="finamoreraul-blip/aura-beauty";
 let token=localStorage.getItem("gh_token");
 if(!token){token=prompt("Token ghp_:"); if(token){localStorage.setItem("gh_token",token.trim()); token=token.trim();}}
-let b64=null,nameImg=null, originalSrc=null, rot=0;
-const dz=document.getElementById("dropZone"), fi=document.getElementById("fileInput"), prev=document.getElementById("preview"), dc=document.getElementById("dropContent"), btnEditor=document.getElementById("btnEditor"), btnGoogle=document.getElementById("btnGoogle");
+let b64=null,nameImg=null,ultimaUrlFoto=null,originalB64=null;
+let extras=[]; // V8.2
+let coleccionesSeleccionadas=[], filtrosActuales={b:100,c:100,s:100,w:0};
+const fi=document.getElementById("fileInput"), prev=document.getElementById("preview"), dc=document.getElementById("dropContent");
 fi.addEventListener("change",()=>handle(fi.files[0]));
-dz.addEventListener("dragover",e=>{e.preventDefault()});
-dz.addEventListener("drop",e=>{e.preventDefault(); handle(e.dataTransfer.files[0])});
-function handle(f){
- if(!f) return;
- nameImg=Date.now()+"_"+f.name.replace(/\s/g,"_");
- let r=new FileReader();
- r.onload=e=>{b64=e.target.result.split(",")[1]; originalSrc=e.target.result; prev.src=e.target.result; prev.style.display="block"; dc.innerText="✅ "+f.name; btnEditor.style.display="block"; btnGoogle.style.display="block";};
- r.readAsDataURL(f);
-}
-document.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{c.classList.toggle("active"); c.querySelector("input").checked=c.classList.contains("active")}));
-function decode(b){try{const c=b.replace(/\n/g,""); const bin=atob(c); const u=Uint8Array.from(bin,x=>x.charCodeAt(0)); return new TextDecoder().decode(u);}catch{return "[]";}}
-const modal=document.getElementById("editorModal"), canvas=document.getElementById("editorCanvas"), ctx=canvas.getContext("2d"), imgEditor=new Image();
-function abrirEditor(){
- modal.style.display="flex";
- imgEditor.src=originalSrc;
- imgEditor.onload=()=>{canvas.width=imgEditor.width; canvas.height=imgEditor.height; draw();}
-}
-function draw(){
- const bri=document.getElementById("brillo").value, cont=document.getElementById("contraste").value;
- ctx.filter=`brightness(${bri}%) contrast(${cont}%)`;
- ctx.save(); ctx.translate(canvas.width/2,canvas.height/2); ctx.rotate(rot*Math.PI/180); ctx.drawImage(imgEditor,-imgEditor.width/2,-imgEditor.height/2); ctx.restore();
-}
-document.getElementById("brillo").addEventListener("input",draw);
-document.getElementById("contraste").addEventListener("input",draw);
-function rotar(){rot=(rot+90)%360; draw();}
-function aplicarFiltro(t){if(t=='bw') ctx.filter='grayscale(100%)'; draw();}
-function guardarEdicion(){
- const dataUrl=canvas.toDataURL("image/jpeg",0.9);
- b64=dataUrl.split(",")[1];
- prev.src=dataUrl;
- originalSrc=dataUrl;
- cerrarEditor();
-}
-function cerrarEditor(){modal.style.display="none";}
-function buscarGoogle(){
- const nombre=document.getElementById("nombre").value || "labial maquillaje";
- const tono=document.getElementById("tono").value || "";
- const query=`${nombre} ${tono} características ingredientes modo de uso`;
- window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`,'_blank');
- window.open(`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(query)}`,'_blank');
-}
-function renovarToken(){
-  if(confirm("¿Borrar token viejo y poner uno nuevo?")){
-    localStorage.removeItem('gh_token');
-    location.reload();
+function handle(f){ if(!f) return; nameImg=Date.now()+"_"+f.name.replace(/\s/g,"_"); let r=new FileReader(); r.onload=e=>{ b64=e.target.result.split(",")[1]; originalB64=e.target.result; prev.src=e.target.result; prev.style.display="block"; dc.innerText="✅ "+f.name; document.getElementById("btnEditor").style.display="block"; document.getElementById("btnGoogle").style.display="block"; ultimaUrlFoto=null; }; r.readAsDataURL(f); }
+
+// V8.2 EXTRAS
+document.getElementById("fileExtra").addEventListener("change",e=>handleExtras(e.target.files));
+function handleExtras(files){
+  for(let f of files){
+    if(extras.length>=4) break;
+    let idx=extras.length;
+    let r=new FileReader();
+    r.onload=ev=>{
+      extras.push({b64:ev.target.result.split(",")[1],name:Date.now()+"_"+idx+"_"+f.name.replace(/\s/g,"_"),src:ev.target.result});
+      let img=document.getElementById("ex"+idx); img.src=ev.target.result; img.style.display="block"; img.parentElement.querySelector("span").style.display="none";
+    };
+    r.readAsDataURL(f);
   }
 }
-async function publicar(){
- const msg=document.getElementById("msg"), btn=document.getElementById("btnPubli");
- try{
-  if(!b64) throw new Error("Cargá foto");
-  const nombre=document.getElementById("nombre").value.trim();
-  const precio=document.getElementById("precio").value.trim();
-  if(!nombre||!precio) throw new Error("Falta nombre/precio");
-  msg.innerText="✅ ¡PUM! En vivo";
-  btn.disabled=false;
- }catch(e){msg.className="msg err"; msg.innerText="❌ "+e.message; document.getElementById("btnPubli").disabled=false;}
+
+document.querySelectorAll("#chipsPanel .chip").forEach(c=>{
+  c.addEventListener("click", ()=>{
+    c.classList.toggle("active");
+    const val=c.dataset.value;
+    if(c.classList.contains("active")){ if(!coleccionesSeleccionadas.includes(val)) coleccionesSeleccionadas.push(val); }
+    else{ coleccionesSeleccionadas=coleccionesSeleccionadas.filter(v=>v!==val); }
+  });
+});
+
+function calcPrecios(origen){
+  const tach=document.getElementById("precioTachado").value;
+  const desc=document.getElementById("descuento").value;
+  const actual=document.getElementById("precio").value;
+  const info=document.getElementById("calcInfo");
+  if(origen==='tachado' || origen==='desc'){
+    if(tach){ const nuevo=Math.round(tach * (1 - desc/100)); document.getElementById("precio").value=nuevo; info.innerText=`${tach} - ${desc}% = $${nuevo}`; }
+  }
+  if(origen==='actual'){ if(tach && actual){ const porc=Math.round(100 - (actual*100/tach)); document.getElementById("descuento").value=porc>0? porc : 0; info.innerText=`Desc: ${porc}%`; } }
 }
+function abrirEditor(){ if(!originalB64 &&!prev.src) return; document.getElementById("editImg").src=originalB64 || prev.src; document.getElementById("editorModal").style.display="flex"; resetFiltros(); }
+function cerrarEditor(){ document.getElementById("editorModal").style.display="none"; }
+function aplicarFiltros(){
+  const b=document.getElementById("rBrillo").value; const c=document.getElementById("rContraste").value; const s=document.getElementById("rSat").value; const w=document.getElementById("rCalidez").value;
+  filtrosActuales={b,c,s,w};
+  document.getElementById("vBrillo").innerText=b+"%"; document.getElementById("vContraste").innerText=c+"%"; document.getElementById("vSat").innerText=s+"%"; document.getElementById("vCalidez").innerText=w;
+  const calidez=w>0? `sepia(${w/2}%)` : "";
+  document.getElementById("editImg").style.filter=`brightness(${b}%) contrast(${c}%) saturate(${s}%) ${calidez}`;
+}
+function resetFiltros(){ document.getElementById("rBrillo").value=100; document.getElementById("rContraste").value=100; document.getElementById("rSat").value=100; document.getElementById("rCalidez").value=0; aplicarFiltros(); }
+function guardarEdicion(){
+  const canvas=document.createElement("canvas"); const img=document.getElementById("editImg");
+  canvas.width=img.naturalWidth; canvas.height=img.naturalHeight;
+  const ctx=canvas.getContext("2d"); ctx.filter=`brightness(${filtrosActuales.b}%) contrast(${filtrosActuales.c}%) saturate(${filtrosActuales.s}%) sepia(${filtrosActuales.w>0? filtrosActuales.w/2 : 0}%)`;
+  ctx.drawImage(img,0,0); const dataUrl=canvas.toDataURL("image/jpeg",0.9);
+  b64=dataUrl.split(",")[1]; prev.src=dataUrl; prev.style.display="block"; cerrarEditor();
+}
+function decode(b){ try{ const c=b.replace(/\n/g,""); const bin=atob(c); const u=Uint8Array.from(bin,x=>x.charCodeAt(0)); return new TextDecoder().decode(u);}catch{ return "[]"; } }
+function renovarToken(){ if(confirm("¿Borrar token?")){ localStorage.removeItem('gh_token'); location.reload(); } }
+async function buscarGoogleReal(){ if(!b64 &&!ultimaUrlFoto){ alert("Cargá foto"); return; } if(!ultimaUrlFoto && b64){ await fetch(`https://api.github.com/repos/${REPO}/contents/img/${nameImg}`,{method:"PUT",headers:{Authorization:`token ${token}`,"Content-Type":"application/json"},body:JSON.stringify({message:"temp "+nameImg,content:b64})}); ultimaUrlFoto=`https://raw.githubusercontent.com/${REPO}/main/img/${nameImg}`; } window.open(`https://lens.google.com/uploadbyurl?url=${encodeURIComponent(ultimaUrlFoto)}`,'_blank'); }
+
+async function publicar(){
+ const msg=document.getElementById("msg"), btn=document.getElementById("btnPubli"); const editId=localStorage.getItem("aura_edit_id");
+ try{
+  if(!b64 &&!ultimaUrlFoto &&!editId) throw new Error("Cargá foto");
+  if(!document.getElementById("nombre").value.trim()||!document.getElementById("precio").value.trim()) throw new Error("Falta nombre/precio");
+  msg.className="msg ok"; msg.style.display="block"; msg.innerText=editId? "⏳ Actualizando...":"⏳ Subiendo..."; btn.disabled=true;
+  if(b64 &&!ultimaUrlFoto){ let r1=await fetch(`https://api.github.com/repos/${REPO}/contents/img/${nameImg}`,{method:"PUT",headers:{Authorization:`token ${token}`,"Content-Type":"application/json"},body:JSON.stringify({message:"img "+nameImg,content:b64})}); if(!r1.ok) throw new Error("Error foto"); ultimaUrlFoto=`https://raw.githubusercontent.com/${REPO}/main/img/${nameImg}`; }
+  // SUBIR EXTRAS V8.2
+  let urlsExtras=[];
+  if(extras.length>0){
+    for(let i=0;i<extras.length;i++){
+      msg.innerText=`⏳ Subiendo extra ${i+1}/${extras.length}...`;
+      let rEx=await fetch(`https://api.github.com/repos/${REPO}/contents/img/${extras[i].name}`,{method:"PUT",headers:{Authorization:`token ${token}`,"Content-Type":"application/json"},body:JSON.stringify({message:"img extra "+extras[i].name,content:extras[i].b64})});
+      if(rEx.ok){ urlsExtras.push(`https://raw.githubusercontent.com/${REPO}/main/img/${extras[i].name}`); }
+    }
+  }
+  let r2=await fetch(`https://api.github.com/repos/${REPO}/contents/productos.json`,{headers:{Authorization:`token ${token}`}}); let d2=await r2.json(); let lista=JSON.parse(decode(d2.content)||"[]"); if(!Array.isArray(lista)) lista=[];
+  let prodAnterior=null; if(editId){ prodAnterior=lista.find(p=>p.id==editId); lista=lista.filter(p=>p.id!=editId); if(prodAnterior && urlsExtras.length===0 && prodAnterior.imagenes){ urlsExtras=prodAnterior.imagenes; } }
+  const nuevo={ id: editId? parseInt(editId) : Date.now(), nombre:document.getElementById("nombre").value, precio:parseInt(document.getElementById("precio").value), precioTachado: parseInt(document.getElementById("precioTachado").value)||null, descuento: parseInt(document.getElementById("descuento").value)||0, stock:parseInt(document.getElementById("stock").value)||0, contenido:document.getElementById("contenido").value, tono:document.getElementById("tono").value, acabado:document.getElementById("acabado").value, categoria:document.getElementById("categoria").value, imagen:ultimaUrlFoto, imagenes:urlsExtras, tags:[...coleccionesSeleccionadas], aroma:document.getElementById("aroma").value, cobertura:document.getElementById("cobertura").value, duracion:document.getElementById("duracion").value, tipoPiel:document.getElementById("tipoPiel").value, ingredientes:document.getElementById("ingredientes").value, modoUso:document.getElementById("modoUso").value, fecha:new Date().toISOString() };
+  lista.push(nuevo); let r3=await fetch(`https://api.github.com/repos/${REPO}/contents/productos.json`,{method:"PUT",headers:{Authorization:`token ${token}`,"Content-Type":"application/json"},body:JSON.stringify({message:editId? "Edit "+nuevo.nombre : "Nuevo "+nuevo.nombre,content:btoa(unescape(encodeURIComponent(JSON.stringify(lista,null,2)))),sha:d2.sha})}); if(!r3.ok) throw new Error(await r3.text());
+  if(editId && prodAnterior){ let histEdit=JSON.parse(localStorage.getItem("aura_hist_editados")||"[]"); histEdit.push({id:prodAnterior.id, nombre:prodAnterior.nombre, precioOld:prodAnterior.precio, precioNew:nuevo.precio, tachadoOld:prodAnterior.precioTachado, tachadoNew:nuevo.precioTachado, fecha:new Date().toISOString()}); localStorage.setItem("aura_hist_editados", JSON.stringify(histEdit)); }
+  msg.innerText="✅ En vivo con "+(urlsExtras.length+1)+" fotos!"; btn.disabled=false; ultimaUrlFoto=null; b64=null; extras=[]; localStorage.removeItem("aura_edit_id"); cargarHistorial();
+ }catch(e){ msg.className="msg err"; msg.style.display="block"; msg.innerText="❌ "+e.message; document.getElementById("btnPubli").disabled=false; }
+}
+
+let productosHist=[], tabActual="activos";
+async function cargarHistorial(){ let r2=await fetch(`https://api.github.com/repos/${REPO}/contents/productos.json?t=${Date.now()}`,{headers:{Authorization:`token ${token}`}}); let d2=await r2.json(); productosHist=JSON.parse(decode(d2.content)||"[]"); renderHistorial(); }
+function switchTab(tab, el){ tabActual=tab; document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active")); el.classList.add("active"); renderHistorial(); }
+function renderHistorial(){
+  const cont=document.getElementById("listaHistorial"); let ventas=JSON.parse(localStorage.getItem("aura_ventas")||"{}"); let histElim=JSON.parse(localStorage.getItem("aura_hist_eliminados")||"[]"); let histEdit=JSON.parse(localStorage.getItem("aura_hist_editados")||"[]");
+  document.getElementById("cActivos").innerText=productosHist.length; document.getElementById("cVendidos").innerText=Object.values(ventas).reduce((a,b)=>a+b,0) || 0; document.getElementById("cEliminados").innerText=histElim.length; document.getElementById("cEditados").innerText=histEdit.length;
+  if(tabActual==="activos"){ cont.innerHTML=[...productosHist].reverse().map(p=>{ const vend=ventas[p.id]||0; return `<div style="background:#0a0a0a;border:1px solid #1e1e1e;border-radius:14px;padding:10px;display:flex;gap:10px;align-items:center"><img src="${p.imagen}" style="width:56px;height:56px;border-radius:10px;object-fit:cover"><div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.nombre}</div><div style="font-size:10px;color:#666">$${p.precio} • ${p.categoria} • ${(p.tags||[]).join(", ")} • ${p.imagenes? p.imagenes.length+1 : 1} fotos</div><div style="font-size:9px;color:${vend>0?'#10b981':'#444'}">${vend} vendidos</div></div><div style="display:flex;flex-direction:column;gap:5px"><button onclick="editarProd(${p.id})" style="padding:6px 10px;border-radius:8px;border:1px solid #222;background:#111;color:#fff;font-size:10px">✏️</button><button onclick="eliminarProd(${p.id})" style="padding:6px 10px;border-radius:8px;border:1px solid #2a1a1a;background:#1a0a0a;color:#ff4d6d;font-size:10px">🗑️</button></div></div>`; }).join(""); }
+  else if(tabActual==="vendidos"){ let lista=[...productosHist].map(p=>({...p, vendidos: ventas[p.id]||0 })).sort((a,b)=>b.vendidos-a.vendidos).filter(p=>p.vendidos>0); cont.innerHTML=lista.map(p=>`<div style="background:#0f1a14;border:1px solid #1e3a2a;border-radius:14px;padding:12px;display:flex;gap:10px"><img src="${p.imagen}" style="width:56px;height:56px;border-radius:10px"><div style="flex:1"><div style="font-size:12px;font-weight:800">${p.nombre}</div><div style="font-size:18px;font-weight:800;color:#10b981">${p.vendidos} unidades</div></div></div>`).join("") || "<div style='color:#444;padding:20px;text-align:center'>Sin ventas</div>"; }
+  else if(tabActual==="eliminados"){ cont.innerHTML=[...histElim].reverse().map(h=>`<div style="background:#1a0a0a;border:1px solid #2a1a1a;border-radius:14px;padding:12px;display:flex;gap:10px"><img src="${h.imagen}" style="width:56px;height:56px;border-radius:10px;opacity:.6"><div style="flex:1"><div style="font-size:12px;text-decoration:line-through;color:#888">${h.nombre}</div><div style="font-size:11px;color:#ff8fab">Se vendía a $${h.precio} - ${new Date(h.fechaElim).toLocaleString()}</div></div></div>`).join("") || "Sin eliminados"; }
+  else if(tabActual==="editados"){ cont.innerHTML=[...histEdit].reverse().map(h=>`<div style="background:#1a150a;border:1px solid #2a2210;border-radius:14px;padding:12px"><div style="font-size:12px;font-weight:700">${h.nombre}</div><div style="display:flex;gap:12px;margin-top:6px"><div style="background:#0a0a0a;border-radius:8px;padding:8px;flex:1;text-align:center"><div style="font-size:8px;color:#666">ANTES</div><div style="font-size:14px;font-weight:800;color:#888;text-decoration:line-through">$${h.precioOld}</div></div><div style="display:flex;align-items:center;color:#f59e0b">→</div><div style="background:#0a0a0a;border-radius:8px;padding:8px;flex:1;text-align:center"><div style="font-size:8px;color:#666">AHORA</div><div style="font-size:14px;font-weight:800;color:#10b981">$${h.precioNew}</div></div></div><div style="font-size:8px;color:#444;margin-top:6px">${new Date(h.fecha).toLocaleString()}</div></div>`).join("") || "Sin ediciones"; }
+}
+async function eliminarProd(id){ if(!confirm("¿Eliminar?")) return; let r2=await fetch(`https://api.github.com/repos/${REPO}/contents/productos.json`,{headers:{Authorization:`token ${token}`}}); let d2=await r2.json(); let lista=JSON.parse(decode(d2.content)||"[]"); let prod=lista.find(p=>p.id===id); if(prod){ let hist=JSON.parse(localStorage.getItem("aura_hist_eliminados")||"[]"); hist.push({...prod, fechaElim:new Date().toISOString(), fechaOrig:prod.fecha}); localStorage.setItem("aura_hist_eliminados", JSON.stringify(hist)); } lista=lista.filter(p=>p.id!==id); await fetch(`https://api.github.com/repos/${REPO}/contents/productos.json`,{method:"PUT",headers:{Authorization:`token ${token}`,"Content-Type":"application/json"},body:JSON.stringify({message:"Eliminar "+id,content:btoa(unescape(encodeURIComponent(JSON.stringify(lista,null,2)))),sha:d2.sha})}); cargarHistorial(); }
+function editarProd(id){
+  const p=productosHist.find(x=>x.id===id); if(!p) return;
+  document.getElementById("nombre").value=p.nombre; document.getElementById("precio").value=p.precio; document.getElementById("precioTachado").value=p.precioTachado||""; document.getElementById("descuento").value=p.descuento||0; document.getElementById("stock").value=p.stock||0; document.getElementById("contenido").value=p.contenido||""; document.getElementById("tono").value=p.tono||""; document.getElementById("categoria").value=p.categoria||"Labiales"; document.getElementById("aroma").value=p.aroma||""; document.getElementById("cobertura").value=p.cobertura||""; document.getElementById("duracion").value=p.duracion||""; document.getElementById("tipoPiel").value=p.tipoPiel||""; document.getElementById("ingredientes").value=p.ingredientes||""; document.getElementById("modoUso").value=p.modoUso||"";
+  coleccionesSeleccionadas=p.tags||[];
+  document.querySelectorAll("#chipsPanel .chip").forEach(c=>{ const v=c.dataset.value; if(coleccionesSeleccionadas.includes(v)) c.classList.add("active"); else c.classList.remove("active"); });
+  ultimaUrlFoto=p.imagen; b64=null; prev.src=p.imagen; prev.style.display="block"; dc.innerText="📸 Foto actual"; 
+  extras=[]; 
+  if(p.imagenes && p.imagenes.length>0){
+    p.imagenes.forEach((url,idx)=>{
+      if(idx<4){ let img=document.getElementById("ex"+idx); img.src=url; img.style.display="block"; img.parentElement.querySelector("span").style.display="none"; }
+    });
+  }
+  localStorage.setItem("aura_edit_id", id); window.scrollTo({top:0,behavior:"smooth"});
+}
+async function cargarCarritos(){
+  try{
+    const url=`https://raw.githubusercontent.com/${REPO}/main/carritos.json?nocache=${Date.now()}`;
+    const r=await fetch(url,{cache:"no-store"});
+    if(!r.ok){ document.getElementById("listaCarritos").innerHTML="<div style='color:#666;text-align:center;padding:12px'>Creá carritos.json con [] para empezar</div>"; return; }
+    const carritos=await r.json();
+    const totalAbandonado=carritos.reduce((s,c)=>s+(c.total||0),0);
+    document.getElementById("cCarritos").innerText=carritos.length;
+    document.getElementById("cCarritosVal").innerText="$"+totalAbandonado;
+    document.getElementById("listaCarritos").innerHTML=carritos.slice().reverse().map(c=>`
+      <div style="background:#0a0a0a;border:1px solid #2a2a2a;border-radius:14px;padding:12px">
+        <div style="display:flex;justify-content:space-between"><div style="font-size:11px;font-weight:800;color:#fff">🕒 ${new Date(c.fecha).toLocaleString()} • ${c.ciudad||'Tres Arroyos'}</div><div style="font-size:10px;color:#10b981;font-weight:800">$${c.total}</div></div>
+        <div style="font-size:10px;color:#888;margin:6px 0">${c.items.map(i=>`• ${i.nombre} $${i.precio}`).join("<br>")}</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+          <button onclick="window.open('https://wa.me/5492983389710?text=${encodeURIComponent(`Hola! Viste ${c.items.map(i=>i.nombre).join(', ')} por $${c.total} en AURA BEAUTY Tres Arroyos ✨ Te hago 10% OFF hoy: $${Math.round(c.total*0.9)} ¿Lo cerramos?`)}','_blank')" style="padding:8px;border-radius:10px;border:none;background:linear-gradient(90deg,#10b981,#34d399);color:#fff;font-size:10px;font-weight:800;cursor:pointer">💸 OFERTA 10% OFF</button>
+          <button onclick="window.open('https://wa.me/5492983389710?text=${encodeURIComponent(`Hola! Tu carrito de $${c.total} en AURA BEAUTY Tres Arroyos te espera 🔥 15% OFF hoy: $${Math.round(c.total*0.85)}`)}','_blank')" style="padding:8px;border-radius:10px;border:none;background:linear-gradient(90deg,#ff4d6d,#ff8fab);color:#fff;font-size:10px;font-weight:800;cursor:pointer">🔥 OFERTA 15% OFF</button>
+        </div>
+      </div>`).join("") || "<div style='color:#444;text-align:center;padding:20px'>Sin carritos aún</div>";
+  }catch(e){ console.log(e); }
+}
+setTimeout(cargarHistorial, 800);
+setTimeout(cargarCarritos, 1200);
+setInterval(cargarCarritos, 10000);
 </script>
 </body>
 </html>
