@@ -174,7 +174,7 @@
   {
     "id": 1789758489945,
     "nombre": "Mascarilla facial ",
-    "precio": 3,
+    "precio": 0,
     "precioTachado": null,
     "descuento": 0,
     "stock": 10,
@@ -198,6 +198,6 @@
     "tipoPiel": "",
     "ingredientes": "",
     "modoUso": "",
-    "fecha": "2026-09-18T19:08:09.947Z"
+    "fecha": "2026-09-18T19:10:59.800Z"
   }
 ]
