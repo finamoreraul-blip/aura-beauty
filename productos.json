@@ -1,29 +1,5 @@
 [
   {
-    "id": 1789748405652,
-    "nombre": "Espejo De Cartera Doble Con Motivo",
-    "precio": 4000,
-    "precioTachado": 5000,
-    "descuento": 20,
-    "stock": 6,
-    "contenido": "...",
-    "tono": "...",
-    "acabado": "Metalizado",
-    "categoria": "Maquillaje",
-    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789748335257_1001187973.jpg",
-    "tags": [
-      "novedad",
-      "edicion-limitada"
-    ],
-    "aroma": "",
-    "cobertura": "",
-    "duracion": "",
-    "tipoPiel": "",
-    "ingredientes": "Espejos super resistentes ",
-    "modoUso": "",
-    "fecha": "2026-09-18T16:21:10.571Z"
-  },
-  {
     "id": 1789749347751,
     "nombre": "Parches para acné x36 unidades",
     "precio": 3000,
@@ -163,5 +139,33 @@
     "ingredientes": "Esponjitas para maquillar.\nVariedad de colores",
     "modoUso": "",
     "fecha": "2026-09-18T19:04:26.553Z"
+  },
+  {
+    "id": 1789748405652,
+    "nombre": "Espejo De Cartera Doble Con Motivo",
+    "precio": 4000,
+    "precioTachado": 5000,
+    "descuento": 20,
+    "stock": 6,
+    "contenido": "...",
+    "tono": "...",
+    "acabado": "Mate",
+    "categoria": "Maquillaje",
+    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789748335257_1001187973.jpg",
+    "imagenes": [
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758295984_0_1001187971.jpg",
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758303096_1_1001187965.jpg"
+    ],
+    "tags": [
+      "novedad",
+      "edicion-limitada"
+    ],
+    "aroma": "",
+    "cobertura": "",
+    "duracion": "",
+    "tipoPiel": "",
+    "ingredientes": "Espejos super resistentes ",
+    "modoUso": "",
+    "fecha": "2026-09-18T19:05:27.183Z"
   }
 ]
