@@ -73,30 +73,6 @@
     "fecha": "2026-09-18T19:01:20.233Z"
   },
   {
-    "id": 1789754036387,
-    "nombre": "Set de perfiladores ",
-    "precio": 2500,
-    "precioTachado": 2500,
-    "descuento": 0,
-    "stock": 10,
-    "contenido": "X3",
-    "tono": "Celeste, amarillo, rosa",
-    "acabado": "Mate",
-    "categoria": "Skincare",
-    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789753865746_1001188006.jpg",
-    "imagenes": [],
-    "tags": [
-      "liquidacion"
-    ],
-    "aroma": "",
-    "cobertura": "",
-    "duracion": "Larga duración",
-    "tipoPiel": "",
-    "ingredientes": "Set de 3 perfiladores ",
-    "modoUso": "",
-    "fecha": "2026-09-18T19:01:37.039Z"
-  },
-  {
     "id": 1789754381826,
     "nombre": "Arqueador de pestañas ",
     "precio": 2550,
@@ -155,5 +131,31 @@
     "ingredientes": "Set de mini brochas.\nVarios colores",
     "modoUso": "",
     "fecha": "2026-09-18T19:03:27.768Z"
+  },
+  {
+    "id": 1789754036387,
+    "nombre": "Set de perfiladores ",
+    "precio": 2500,
+    "precioTachado": 2500,
+    "descuento": 0,
+    "stock": 10,
+    "contenido": "X3",
+    "tono": "Celeste, amarillo, rosa",
+    "acabado": "Mate",
+    "categoria": "Skincare",
+    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789753865746_1001188006.jpg",
+    "imagenes": [
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758219062_0_1001188009.jpg"
+    ],
+    "tags": [
+      "liquidacion"
+    ],
+    "aroma": "",
+    "cobertura": "",
+    "duracion": "Larga duración",
+    "tipoPiel": "",
+    "ingredientes": "Set de 3 perfiladores ",
+    "modoUso": "",
+    "fecha": "2026-09-18T19:03:42.755Z"
   }
 ]
