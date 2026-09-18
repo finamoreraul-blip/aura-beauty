@@ -1,31 +1,5 @@
 [
   {
-    "id": 1789749347751,
-    "nombre": "Parches para acné x36 unidades",
-    "precio": 3000,
-    "precioTachado": 3000,
-    "descuento": 0,
-    "stock": 10,
-    "contenido": "36",
-    "tono": "Indefinido",
-    "acabado": "Mate",
-    "categoria": "Skincare",
-    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789754684429_1001188027.jpg",
-    "imagenes": [
-      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758061221_0_1001188042.jpg"
-    ],
-    "tags": [
-      "novedad"
-    ],
-    "aroma": "",
-    "cobertura": "Full Cover",
-    "duracion": "Larga duración",
-    "tipoPiel": "",
-    "ingredientes": "Parches para acné con motivos de: frutas, animales, corazones.",
-    "modoUso": "Adhesivo",
-    "fecha": "2026-09-18T19:01:20.233Z"
-  },
-  {
     "id": 1789754381826,
     "nombre": "Arqueador de pestañas ",
     "precio": 2550,
@@ -167,5 +141,34 @@
     "ingredientes": "Espejos super resistentes ",
     "modoUso": "",
     "fecha": "2026-09-18T19:05:27.183Z"
+  },
+  {
+    "id": 1789749347751,
+    "nombre": "Parches para acné x36 unidades",
+    "precio": 3000,
+    "precioTachado": 3000,
+    "descuento": 0,
+    "stock": 10,
+    "contenido": "36",
+    "tono": "Indefinido",
+    "acabado": "Mate",
+    "categoria": "Skincare",
+    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789754684429_1001188027.jpg",
+    "imagenes": [
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758340781_0_1001188039.jpg",
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758347828_1_1001188030.jpg",
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758352651_2_1001188033.jpg",
+      "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758360215_3_1001188036.jpg"
+    ],
+    "tags": [
+      "novedad"
+    ],
+    "aroma": "",
+    "cobertura": "Full Cover",
+    "duracion": "Larga duración",
+    "tipoPiel": "",
+    "ingredientes": "Parches para acné con motivos de: frutas, animales, corazones.",
+    "modoUso": "Adhesivo",
+    "fecha": "2026-09-18T19:06:10.933Z"
   }
 ]
