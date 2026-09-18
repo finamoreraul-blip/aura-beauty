@@ -1,1 +1,25 @@
-[]
+[
+  {
+    "id": 1789692520400,
+    "nombre": "sadasda",
+    "precio": 67100,
+    "precioTachado": 74555,
+    "descuento": 10,
+    "stock": 45,
+    "contenido": "52",
+    "tono": "asdasd",
+    "acabado": "Mate",
+    "categoria": "Labiales",
+    "tipoPiel": "Todo tipo",
+    "caracteristicas": [
+      "asdasdas",
+      "dasdasd"
+    ],
+    "ingredientes": "asdasdas",
+    "modoUso": "dasd",
+    "descripcion": "asdasd",
+    "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789692483075_afeitadora5.jpg",
+    "tags": [],
+    "fecha": "2026-09-18T00:48:40.401Z"
+  }
+]
