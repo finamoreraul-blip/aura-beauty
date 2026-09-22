@@ -174,13 +174,13 @@
   {
     "id": 1789758489945,
     "nombre": "Mascarilla facial ",
-    "precio": 0,
-    "precioTachado": null,
+    "precio": 2000,
+    "precioTachado": 2000,
     "descuento": 0,
-    "stock": 10,
-    "contenido": "36",
+    "stock": 6,
+    "contenido": "1",
     "tono": "Indefinido",
-    "acabado": "Mate",
+    "acabado": "Cremoso",
     "categoria": "Skincare",
     "imagen": "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758388905_1001188063.jpg",
     "imagenes": [
@@ -189,15 +189,13 @@
       "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758405331_2_1001188057.jpg",
       "https://raw.githubusercontent.com/finamoreraul-blip/aura-beauty/main/img/1789758412541_3_1001188054.jpg"
     ],
-    "tags": [
-      "novedad"
-    ],
-    "aroma": "",
+    "tags": [],
+    "aroma": "Coco",
     "cobertura": "Full Cover",
     "duracion": "Larga duración",
     "tipoPiel": "",
     "ingredientes": "",
     "modoUso": "",
-    "fecha": "2026-09-18T19:10:59.800Z"
+    "fecha": "2026-09-22T23:04:51.251Z"
   }
 ]
