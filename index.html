@@ -7,14 +7,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#08080a;color:#fff;min-height:100vh}
-body::before{content:"";position:fixed;inset:0;background:radial-gradient(900px at 10% -10%, rgba(255,77,109,.22) 0%, transparent 60%), radial-gradient(700px at 95% 10%, rgba(255,194,209,.18) 0%, transparent 55%);pointer-events:none}
-header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;background:rgba(8,8,10,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07)}
-.logo{font-family:'Playfair Display',serif;font-size:34px;font-weight:800;background:linear-gradient(90deg,#ff4d6d,#ff8fab,#ffc2d1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.sub{font-size:11px;letter-spacing:7px;color:#ff8fab;margin-top:6px;font-weight:800}
+body{font-family:'Inter',sans-serif;background:#0f0a14;color:#fff;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(900px at 10% -10%, rgba(153,102,204,.22) 0%, transparent 60%), radial-gradient(700px at 95% 10%, rgba(195,155,211,.18) 0%, transparent 55%);pointer-events:none}
+header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;background:rgba(15,10,20,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07)}
+.logo{font-family:'Playfair Display',serif;font-size:34px;font-weight:800;background:linear-gradient(90deg,#9966CC,#C39BD3,#E8D5F2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{font-size:11px;letter-spacing:7px;color:#C39BD3;margin-top:6px;font-weight:800}
 .container{max-width:1240px;margin:0 auto;padding:16px 14px 130px;position:relative;z-index:1}
 .search{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);padding:16px 20px;border-radius:22px;color:#fff;outline:none;font-size:14px;margin-bottom:12px;position:sticky;top:88px;z-index:10;backdrop-filter:blur(12px)}
-.stats{font-size:11px;color:#777;margin-bottom:12px}.stats b{color:#ff8fab}
+.stats{font-size:11px;color:#777;margin-bottom:12px}.stats b{color:#C39BD3}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
 .chip{padding:10px 15px;border-radius:30px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
 .chip.active{background:#10b981!important;color:#fff!important;border-color:#10b981!important}
@@ -29,26 +29,26 @@ header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;backgroun
 .card:active{transform:scale(.97)}
 .imgWrap{aspect-ratio:1;background:#111;position:relative;overflow:hidden}
 .imgWrap img{width:100%;height:100%;object-fit:cover}
-.badge{position:absolute;top:10px;left:10px;padding:5px 10px;border-radius:20px;font-size:10px;font-weight:800;background:linear-gradient(90deg,#ff4d6d,#ff8fab);color:#fff;z-index:2}
+.badge{position:absolute;top:10px;left:10px;padding:5px 10px;border-radius:20px;font-size:10px;font-weight:800;background:linear-gradient(90deg,#9966CC,#C39BD3);color:#fff;z-index:2}
 .info{padding:10px}
 .name{font-size:12px;font-weight:700;min-height:32px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.3}
 .meta{font-size:10px;color:#888;margin:4px 0}
 .price{font-size:17px;font-weight:800}
 .priceOld{font-size:11px;color:#555;text-decoration:line-through;margin-left:6px}
 .actions{display:flex;gap:6px;margin-top:10px}
-.btnBuy{flex:1;padding:12px;border-radius:12px;border:none;background:linear-gradient(90deg,#ff4d6d,#ff8fab);color:#fff;font-weight:800;font-size:11px;cursor:pointer}
+.btnBuy{flex:1;padding:12px;border-radius:12px;border:none;background:linear-gradient(90deg,#9966CC,#7A3E9D);color:#fff;font-weight:800;font-size:11px;cursor:pointer}
 .btnIcon{width:44px;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px}
 #previewModal{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(16px);z-index:100;display:none;align-items:center;justify-content:center;padding:10px}
 .prevBox{background:linear-gradient(180deg,#181818,#0f0f0f);border:1px solid rgba(255,255,255,.12);border-radius:26px;width:100%;max-width:980px;max-height:92vh;overflow:hidden;display:grid;grid-template-columns:1.2fr.8fr}
 @media(max-width:750px){.prevBox{grid-template-columns:1fr;overflow:auto;max-height:94vh;border-radius:22px}}
 .prevImgs{background:#0a0a0a;position:relative;display:flex;flex-direction:column}
-.prevMain{aspect-ratio:1;position:relative;overflow:hidden;background:#080808}
+.prevMain{aspect-ratio:1;position:relative;overflow:hidden;background:#080808;touch-action:pan-y}
 .prevMain img{width:100%;height:100%;object-fit:contain}
 .prevThumbs{display:flex;gap:8px;padding:10px;overflow:auto;background:#0f0f0f;border-top:1px solid rgba(255,255,255,.06)}
 .thumb{width:60px;height:60px;border-radius:10px;object-fit:cover;border:2px solid transparent;cursor:pointer;opacity:.6;background:#111}
-.thumb.active{border-color:#ff8fab;opacity:1}
+.thumb.active{border-color:#C39BD3;opacity:1}
 .prevInfo{padding:18px;overflow:auto}
-.prevCat{font-size:10px;letter-spacing:2px;color:#ff8fab;font-weight:800}
+.prevCat{font-size:10px;letter-spacing:2px;color:#C39BD3;font-weight:800}
 .prevName{font-family:'Playfair Display',serif;font-size:24px;line-height:1.1;margin:6px 0}
 .prevMeta{font-size:11px;color:#888;margin-bottom:10px}
 .prevPriceRow{display:flex;align-items:baseline;gap:8px;margin:12px 0;flex-wrap:wrap}
@@ -59,7 +59,7 @@ header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;backgroun
 .qtyBtn{width:40px;height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;font-size:18px;cursor:pointer}
 .qtyNum{font-size:18px;font-weight:800;min-width:28px;text-align:center}
 .btnsPrev{display:grid;gap:8px;margin-top:14px}
-.btnBigBuy{padding:16px;border-radius:14px;border:none;background:linear-gradient(90deg,#ff4d6d,#ff8fab);color:#fff;font-weight:800;font-size:13px;cursor:pointer}
+.btnBigBuy{padding:16px;border-radius:14px;border:none;background:linear-gradient(90deg,#9966CC,#7A3E9D);color:#fff;font-weight:800;font-size:13px;cursor:pointer}
 .btnBigCart{padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;font-weight:700;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
 .closePrev{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.15);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10}
 .cartFloat{position:fixed;bottom:14px;left:12px;right:12px;max-width:500px;margin:0 auto;background:rgba(16,16,16,.94);border:1px solid rgba(255,255,255,.13);border-radius:22px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(22px);z-index:60;box-shadow:0 20px 60px rgba(0,0,0,.7)}
@@ -71,19 +71,19 @@ header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;backgroun
 .calcRow{display:flex;justify-content:space-between;font-size:12px;margin:6px 0;color:#aaa}
 .calcRow.total{font-size:16px;font-weight:800;color:#fff;border-top:1px solid rgba(255,255,255,.1);padding-top:10px;margin-top:10px}
 .calcRow.ahorro{color:#10b981;font-weight:700}
-/* NUEVO ML */
 .specTable{margin-top:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden}
 .specRow{display:flex;justify-content:space-between;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.06);font-size:11px}
 .specRow:last-child{border:none}
 .specKey{color:#888;text-transform:uppercase;letter-spacing:1px;font-size:9px;font-weight:800;max-width:45%}
 .specVal{color:#fff;font-weight:600;text-align:right;max-width:55%}
+.prevDesc{max-height:120px;overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y}
 </style>
 </head>
 <body>
-<header><div class="logo">AURA BEAUTY</div><div class="sub">TRES ARROYOS</div></header>
+<header><img src="logoaura.jpg" style="width:90px;height:90px;border-radius:50%;object-fit:cover;margin-bottom:8px;border:2px solid #9966CC"><div class="logo">AURA BEAUTY</div><div class="sub">TRES ARROYOS</div></header>
 <div class="container">
 <input id="buscador" class="search" placeholder="🔍 Buscar producto, tono, aroma...">
-<div id="stats" class="stats">Conectando al panel...</div>
+<div id="stats" class="stats">Conectando...</div>
 <div class="chips">
 <div class="chip" data-tag="novedad">✨ Novedad</div>
 <div class="chip" data-tag="se-va-pronto">🔥 Se va pronto</div>
@@ -94,10 +94,9 @@ header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;backgroun
 <div class="chip" data-tag="cruelty-free">🐰 Cruelty Free</div>
 <div class="chip" data-tag="envio-gratis">🚚 Envío Gratis</div>
 </div>
-<div class="cats" id="cats"><div class="cat active" data-cat="todos">Todos</div><div class="cat" data-cat="Labiales">Labiales</div><div class="cat" data-cat="Skincare">Skincare</div><div class="cat" data-cat="Perfumes">Perfumes</div><div class="cat" data-cat="Maquillaje">Maquillaje</div><div class="cat" data-cat="Ojos">Ojos</div><div class="cat" data-cat="Uñas">Uñas</div></div>
+<div class="cats" id="cats"><div class="cat active" data-cat="todos">Todos</div><div class="cat" data-cat="Labiales">💋 Labiales</div><div class="cat" data-cat="Skincare">✨ Skincare</div><div class="cat" data-cat="Perfumes">🌸 Perfumes</div><div class="cat" data-cat="Maquillaje">💄 Maquillaje</div><div class="cat" data-cat="Ojos">👀 Ojos</div><div class="cat" data-cat="Uñas">💅 Uñas</div></div>
 <div id="grid" class="grid"></div>
 </div>
-
 <div id="previewModal" onclick="if(event.target===this) cerrarPreview()">
 <div class="prevBox">
 <div class="prevImgs">
@@ -109,17 +108,13 @@ header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;backgroun
 <div class="prevName" id="prevName"></div>
 <div class="prevMeta" id="prevMeta"></div>
 <div class="prevPriceRow"><span class="prevPrice" id="prevPrice"></span><span class="prevOld" id="prevOld"></span><span class="prevOff" id="prevOff" style="display:none"></span></div>
-
 <div class="prevDesc" id="prevDesc" style="font-size:12px;color:#aaa;line-height:1.5;background:rgba(255,255,255,.04);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.06)">Producto original. Envío en Tres Arroyos.</div>
-
-<!-- BLOQUE TIPO MERCADO LIBRE -->
 <div id="specBlock" style="display:none">
 <div style="font-size:12px;font-weight:800;margin:18px 0 8px;letter-spacing:1px">CARACTERÍSTICAS</div>
 <div class="specTable" id="specTable"></div>
-<div id="ingrBlock" style="display:none;margin-top:12px"><div style="font-size:10px;letter-spacing:2px;color:#ff8fab;font-weight:800;margin-bottom:6px">INGREDIENTES</div><div id="ingrText" style="font-size:11px;color:#bbb;line-height:1.6;background:rgba(255,255,255,.03);padding:10px;border-radius:10px"></div></div>
-<div id="usoBlock" style="display:none;margin-top:12px"><div style="font-size:10px;letter-spacing:2px;color:#ff8fab;font-weight:800;margin-bottom:6px">MODO DE USO</div><div id="usoText" style="font-size:11px;color:#bbb;line-height:1.6;background:rgba(255,255,255,.03);padding:10px;border-radius:10px"></div></div>
+<div id="ingrBlock" style="display:none;margin-top:12px"><div style="font-size:10px;letter-spacing:2px;color:#C39BD3;font-weight:800;margin-bottom:6px">INGREDIENTES</div><div id="ingrText" style="font-size:11px;color:#bbb;line-height:1.6;background:rgba(255,255,255,.03);padding:10px;border-radius:10px;max-height:120px;overflow-y:auto;-webkit-overflow-scrolling:touch"></div></div>
+<div id="usoBlock" style="display:none;margin-top:12px"><div style="font-size:10px;letter-spacing:2px;color:#C39BD3;font-weight:800;margin-bottom:6px">MODO DE USO</div><div id="usoText" style="font-size:11px;color:#bbb;line-height:1.6;background:rgba(255,255,255,.03);padding:10px;border-radius:10px;max-height:120px;overflow-y:auto;-webkit-overflow-scrolling:touch"></div></div>
 </div>
-
 <div class="qtyRow"><button class="qtyBtn" onclick="cambiarQty(-1)">−</button><span class="qtyNum" id="qtyNum">1</span><button class="qtyBtn" onclick="cambiarQty(1)">+</button><span style="font-size:10px;color:#666;margin-left:6px">unidades</span></div>
 <div class="btnsPrev">
 <button class="btnBigBuy" onclick="comprarAhora()">COMPRAR AHORA</button>
@@ -128,9 +123,7 @@ header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;backgroun
 </div>
 </div>
 </div>
-
 <div class="cartFloat" id="cartFloat" style="display:none"><div><div id="cartCount" style="font-size:11px;color:#aaa">0 productos</div><div id="cartTotal" style="font-size:18px;font-weight:800">$0</div></div><button class="btnCart" onclick="abrirCarrito()">VER CARRITO 🛒</button></div>
-
 <div id="cartModal" onclick="if(event.target===this) cerrarCarrito()">
 <div class="cartBox">
 <h3 style="font-family:'Playfair Display',serif;font-size:20px">Tu carrito</h3>
@@ -145,13 +138,11 @@ header{position:sticky;top:0;z-index:20;padding:20px;text-align:center;backgroun
 <button style="width:100%;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.05);color:#888;margin-top:8px" onclick="cerrarCarrito()">Seguir comprando</button>
 </div>
 </div>
-
 <script>
 const WSP="5492983389710";
 const REPO="finamoreraul-blip/aura-beauty";
 let productos=[], filtroCat="todos", filtroTags=[], texto="", carrito=JSON.parse(localStorage.getItem("aura_cart")||"[]");
-let prodActual=null, qtyActual=1;
-
+let prodActual=null, qtyActual=1, prevIdx=0, prevImgs=[];
 async function cargar(){
   const url=`https://raw.githubusercontent.com/${REPO}/main/productos.json?nocache=${Date.now()}_${Math.random()}`;
   const r=await fetch(url,{cache:"no-store"});
@@ -170,12 +161,14 @@ function render(){
   if(filtroCat!=="todos") lista=lista.filter(p=>p.categoria===filtroCat);
   if(filtroTags.length>0) lista=lista.filter(p=>p.tags && filtroTags.some(t=>p.tags.includes(t)));
   if(texto){ const q=texto.toLowerCase(); lista=lista.filter(p=> (p.nombre+" "+(p.tono||"")+" "+(p.tags||[]).join(" ")+" "+(p.aroma||"")+" "+(p.cobertura||"")).toLowerCase().includes(q)); }
-  document.getElementById("stats").innerHTML=`<b>${productos.length}</b> productos • <b>${lista.length}</b> mostrando • En vivo ✅ panel conectado`;
+  document.getElementById("stats").innerHTML=`<b>${productos.length}</b> productos • <b>${lista.length}</b> mostrando`;
   document.getElementById("grid").innerHTML=lista.map(p=>{
     const tieneDesc=p.precioTachado && p.precioTachado>p.precio;
     const porc=tieneDesc? Math.round(100-(p.precio*100/p.precioTachado)) : 0;
+    const imgs=[p.imagen,...(p.imagenes||[])].filter(Boolean);
+    const dataImgs=encodeURIComponent(JSON.stringify(imgs));
     return `<div class="card" onclick="abrirPreview(${p.id})">
-      <div class="imgWrap"><img src="${p.imagen}" loading="lazy">${porc>0?`<div class="badge">-${porc}% OFF</div>`:""}</div>
+      <div class="imgWrap"><img src="${p.imagen}" loading="lazy" data-imgs="${dataImgs}" class="autoCarrusel">${porc>0?`<div class="badge">-${porc}% OFF</div>`:""}</div>
       <div class="info">
         <div class="name">${p.nombre}</div>
         <div class="meta">${p.contenido||""} ${p.tono? "• "+p.tono:""}</div>
@@ -188,12 +181,12 @@ function render(){
     </div>`;
   }).join("");
 }
-
+setInterval(()=>{document.querySelectorAll('.autoCarrusel').forEach(img=>{try{const arr=JSON.parse(decodeURIComponent(img.dataset.imgs));if(arr.length<2)return;let idx=arr.indexOf(img.getAttribute('src'));idx=idx===-1?0:(idx+1)%arr.length;img.src=arr[idx];}catch(e){}});},3000);
 function abrirPreview(id){
   prodActual=productos.find(p=>p.id===id); if(!prodActual) return;
   qtyActual=1; document.getElementById("qtyNum").innerText=qtyActual;
-  const imgs=[prodActual.imagen,...(prodActual.imagenes||[])].filter(Boolean);
-  document.getElementById("prevMainImg").src=imgs[0];
+  prevImgs=[prodActual.imagen,...(prodActual.imagenes||[])].filter(Boolean); prevIdx=0;
+  document.getElementById("prevMainImg").src=prevImgs[0];
   document.getElementById("prevCat").innerText=(prodActual.categoria||"").toUpperCase()+" • "+(prodActual.tags||[]).join(" • ");
   document.getElementById("prevName").innerText=prodActual.nombre;
   document.getElementById("prevMeta").innerText=`${prodActual.contenido||""} ${prodActual.tono? "• Tono "+prodActual.tono:""} ${prodActual.acabado? "• "+prodActual.acabado:""} ${prodActual.aroma? "• "+prodActual.aroma:""} ${prodActual.duracion? "• "+prodActual.duracion:""}`;
@@ -204,11 +197,8 @@ function abrirPreview(id){
     document.getElementById("prevOff").style.display="inline-block";
     document.getElementById("prevOff").innerText="-"+porc+"% OFF";
   } else { document.getElementById("prevOld").innerText=""; document.getElementById("prevOff").style.display="none"; }
-
-  // GALERIA
-  document.getElementById("prevThumbs").innerHTML=imgs.map((im,i)=>`<img src="${im}" class="thumb ${i===0?'active':''}" onclick="cambiarImg(${i})">`).join("");
-
-  // BLOQUE ML
+  document.getElementById("prevThumbs").innerHTML=prevImgs.map((im,i)=>`<img src="${im}" class="thumb ${i===0?'active':''}" onclick="cambiarImg(${i})">`).join("");
+  document.getElementById("prevDesc").innerText=prodActual.descripcion||"Producto original. Envío en Tres Arroyos.";
   const specs=[];
   if(prodActual.contenido) specs.push(["Contenido", prodActual.contenido]);
   if(prodActual.tono) specs.push(["Tono / Color", prodActual.tono]);
@@ -218,12 +208,11 @@ function abrirPreview(id){
   if(prodActual.duracion) specs.push(["Duración", prodActual.duracion]);
   if(prodActual.tipoPiel) specs.push(["Tipo de piel", prodActual.tipoPiel]);
   if(prodActual.categoria) specs.push(["Categoría", prodActual.categoria]);
-  if(imgs.length>1) specs.push(["Fotos", imgs.length+" fotos"]);
+  if(prevImgs.length>1) specs.push(["Fotos", prevImgs.length+" fotos"]);
   if(specs.length>0){
     document.getElementById("specBlock").style.display="block";
     document.getElementById("specTable").innerHTML=specs.map(([k,v])=>`<div class="specRow"><span class="specKey">${k}</span><span class="specVal">${v}</span></div>`).join("");
   } else { document.getElementById("specBlock").style.display="none"; }
-
   if(prodActual.ingredientes){
     document.getElementById("ingrBlock").style.display="block";
     document.getElementById("ingrText").innerText=prodActual.ingredientes;
@@ -232,14 +221,15 @@ function abrirPreview(id){
     document.getElementById("usoBlock").style.display="block";
     document.getElementById("usoText").innerText=prodActual.modoUso;
   } else { document.getElementById("usoBlock").style.display="none"; }
-
   document.getElementById("previewModal").style.display="flex";
+  let sx=0; const pm=document.querySelector('.prevMain');
+  pm.ontouchstart=e=>{sx=e.touches[0].clientX};
+  pm.ontouchend=e=>{const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40){ if(dx<0) cambiarImg((prevIdx+1)%prevImgs.length); else cambiarImg((prevIdx-1+prevImgs.length)%prevImgs.length); }};
 }
-function cambiarImg(i){ const imgs=[prodActual.imagen,...(prodActual.imagenes||[])].filter(Boolean); document.getElementById("prevMainImg").src=imgs[i]; document.querySelectorAll(".thumb").forEach((t,idx)=>t.classList.toggle("active", idx===i)); }
+function cambiarImg(i){ prevIdx=i; document.getElementById("prevMainImg").src=prevImgs[i]; document.querySelectorAll(".thumb").forEach((t,idx)=>t.classList.toggle("active", idx===i)); }
 function cerrarPreview(){ document.getElementById("previewModal").style.display="none"; prodActual=null; }
 function cambiarQty(d){ qtyActual=Math.max(1, qtyActual+d); document.getElementById("qtyNum").innerText=qtyActual; }
 function comprarDirecto(id){ prodActual=productos.find(p=>p.id===id); qtyActual=1; comprarAhora(); }
-
 function comprarAhora(){
   if(!prodActual) return;
   for(let i=0;i<qtyActual;i++) carrito.push(prodActual);
@@ -259,7 +249,6 @@ function addCart(id){
   updateFloat(); mandarCarritoAlPanel();
   const f=document.getElementById("cartFloat"); f.style.transform="scale(1.05)"; setTimeout(()=>f.style.transform="scale(1)",150);
 }
-
 function updateFloat(){
   const f=document.getElementById("cartFloat");
   if(carrito.length===0){ f.style.display="none"; return; }
@@ -287,7 +276,6 @@ function enviarWsp(){
   msg+=`%0ASubtotal: $${totalTachado}%0A${ahorro>0?`Ahorro: -$${ahorro}%0A`:""}TOTAL: $${subtotal} - Envío GRATIS`;
   window.open(`https://wa.me/${WSP}?text=${msg}`,"_blank");
 }
-
 async function mandarCarritoAlPanel(){
   const total = carrito.reduce((s,p)=>s+p.precio,0);
   if(total===0) return;
@@ -323,7 +311,6 @@ async function mandarCarritoAlPanel(){
     });
   }catch(e){ console.log(e); }
 }
-
 document.getElementById("buscador").addEventListener("input",e=>{ texto=e.target.value; render(); });
 document.querySelectorAll(".chip").forEach(ch=>ch.addEventListener("click",()=>{ ch.classList.toggle("active"); const t=ch.dataset.tag; if(ch.classList.contains("active")){ if(!filtroTags.includes(t)) filtroTags.push(t);}else{filtroTags=filtroTags.filter(x=>x!==t);} render(); }));
 document.querySelectorAll(".cat").forEach(c=>c.addEventListener("click",()=>{ document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active")); c.classList.add("active"); filtroCat=c.dataset.cat; render(); }));
